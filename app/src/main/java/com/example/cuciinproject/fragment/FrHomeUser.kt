@@ -2,16 +2,27 @@ package com.example.cuciinproject.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.cuciinproject.R
+import kotlinx.android.synthetic.main.fr_homeuser_activity.*
+import com.example.cuciinproject.adapter.LaundriAdapter
 import com.example.cuciinproject.item.BannerCarouselItem
 import com.example.cuciinproject.model.Banner
+import com.example.cuciinproject.model.Laundri.Laundri
+import com.example.cuciinproject.model.LaundriResponse.LaundriResponse
+import com.example.cuciinproject.service.ApiClient
+import com.example.cuciinproject.service.ApiInterface
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
-import kotlinx.android.synthetic.main.fr_homeuser_activity.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class FrHomeUser : Fragment() {
 
@@ -28,27 +39,31 @@ class FrHomeUser : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        rvLaundri.layoutManager = GridLayoutManager(activity!!, 2)
+        getData()
+
+        val urlGambarBerita = "http://172.168.10.14/cuci_in/images/"
         val promos = listOf(
             Banner(
-                image = "https://s2.bukalapak.com/uploads/promo_partnerinfo_bloggy/2842/Bloggy_1_puncak.jpg"
+                image = urlGambarBerita + "/laundri_1.jpg"
             ),
             Banner(
 
-                image = "https://s2.bukalapak.com/uploads/promo_partnerinfo_bloggy/2842/Bloggy_1_puncak.jpg"
+                image = urlGambarBerita + "/laundri_2.jpg"
             ),
             Banner(
-                image = "https://s2.bukalapak.com/uploads/promo_partnerinfo_bloggy/2842/Bloggy_1_puncak.jpg"
-            ),
-            Banner(
-
-                image = "https://s2.bukalapak.com/uploads/promo_partnerinfo_bloggy/2842/Bloggy_1_puncak.jpg"
-            ),
-            Banner(
-                image = "https://s2.bukalapak.com/uploads/promo_partnerinfo_bloggy/2842/Bloggy_1_puncak.jpg"
+                image = urlGambarBerita + "/laundri_3.jpg"
             ),
             Banner(
 
-                image = "https://s2.bukalapak.com/uploads/promo_partnerinfo_bloggy/2842/Bloggy_1_puncak.jpg"
+                image = urlGambarBerita + "/laundri_4.jpg"
+            ),
+            Banner(
+                image = urlGambarBerita + "/laundri_5.jpg"
+            ),
+            Banner(
+
+                image = urlGambarBerita + "/laundri_6.jpg"
             )
         )
 
@@ -62,5 +77,24 @@ class FrHomeUser : Fragment() {
 
 
         groupAdapter.add(bannerCarouselItem)
+    }
+
+
+    fun getData(){
+        val apiInterface = ApiClient.getClient().create(ApiInterface::class.java)
+        apiInterface.getAllData().enqueue(object : Callback<LaundriResponse> {
+            override fun onFailure(call: Call<LaundriResponse>, t: Throwable) {
+                Toast.makeText(activity!!, "Gk iso", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(call: Call<LaundriResponse>, response: Response<LaundriResponse>) {
+                if (response.code() == 200) {
+                    Log.e("code : ${response.code()}", "${response.body()}")
+                    rvLaundri.adapter = LaundriAdapter(response.body()!!.results)
+                }else{
+                    Log.e("code : ${response.code()}", response.message())
+                }
+            }
+        })
     }
 }
