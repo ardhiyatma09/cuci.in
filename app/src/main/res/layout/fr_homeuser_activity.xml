@@ -11,24 +11,21 @@
             android:layout_height="wrap_content">
 
 
-    <ImageView
-            android:id="@+id/poster"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/laundri"/>
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/poster"
-                android:background="#EFF2F7">
+                android:layout_below="@+id/rvMain">
         <TextView
-                android:id="@+id/outlest"
+                android:id="@+id/outlet"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Outlest"
+                android:text="Outlet"
                 android:layout_marginStart="13dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"

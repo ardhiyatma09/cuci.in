@@ -3,6 +3,7 @@ package com.example.cuciinproject.fragment
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +12,22 @@ import android.widget.Toast
 import com.example.cuciinproject.R
 import kotlinx.android.synthetic.main.fr_homeuser_activity.*
 import com.example.cuciinproject.adapter.LaundriAdapter
+import com.example.cuciinproject.item.BannerCarouselItem
+import com.example.cuciinproject.model.Banner
 import com.example.cuciinproject.model.Laundri.Laundri
 import com.example.cuciinproject.model.LaundriResponse.LaundriResponse
 import com.example.cuciinproject.service.ApiClient
 import com.example.cuciinproject.service.ApiInterface
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class FrHomeUser : Fragment() {
+
+    private var groupAdapter = GroupAdapter<ViewHolder>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +40,44 @@ class FrHomeUser : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rvLaundri.layoutManager = GridLayoutManager(activity!!, 2)
         getData()
+
+        val urlGambarBerita = "http://172.168.10.14/cuci_in/images/"
+        val promos = listOf(
+            Banner(
+                image = urlGambarBerita + "/laundri_1.jpg"
+            ),
+            Banner(
+
+                image = urlGambarBerita + "/laundri_2.jpg"
+            ),
+            Banner(
+                image = urlGambarBerita + "/laundri_3.jpg"
+            ),
+            Banner(
+
+                image = urlGambarBerita + "/laundri_4.jpg"
+            ),
+            Banner(
+                image = urlGambarBerita + "/laundri_5.jpg"
+            ),
+            Banner(
+
+                image = urlGambarBerita + "/laundri_6.jpg"
+            )
+        )
+
+        rvMain.apply {
+            layoutManager = LinearLayoutManager(activity!!)
+            adapter = groupAdapter
+        }
+
+        // declare banner carousel
+        val bannerCarouselItem = BannerCarouselItem(promos, childFragmentManager)
+
+
+        groupAdapter.add(bannerCarouselItem)
     }
+
 
     fun getData(){
         val apiInterface = ApiClient.getClient().create(ApiInterface::class.java)
