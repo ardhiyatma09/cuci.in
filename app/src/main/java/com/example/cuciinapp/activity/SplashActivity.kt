@@ -1,4 +1,4 @@
-package com.example.cuciinproject.activity
+package com.example.cuciinapp.activity
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
-import com.example.cuciinproject.R
+import com.example.cuciinapp.R
 
 class SplashActivity : AppCompatActivity() {
 
