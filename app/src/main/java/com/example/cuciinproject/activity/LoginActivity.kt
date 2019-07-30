@@ -16,6 +16,7 @@ class LoginActivity : AppCompatActivity() {
 
         toRegister = findViewById(R.id.toRegister)
 
+
         toRegister.setOnClickListener {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
