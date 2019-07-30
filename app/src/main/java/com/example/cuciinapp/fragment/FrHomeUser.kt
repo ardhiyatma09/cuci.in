@@ -1,23 +1,23 @@
-package com.example.cuciinproject.fragment
+package com.example.cuciinapp.fragment
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.cuciinproject.R
+import com.example.cuciinapp.R
 import kotlinx.android.synthetic.main.fr_homeuser_activity.*
-import com.example.cuciinproject.adapter.LaundriAdapter
-import com.example.cuciinproject.item.BannerCarouselItem
-import com.example.cuciinproject.model.Banner
-import com.example.cuciinproject.model.Laundri.Laundri
-import com.example.cuciinproject.model.LaundriResponse.LaundriResponse
-import com.example.cuciinproject.service.ApiClient
-import com.example.cuciinproject.service.ApiInterface
+import com.example.cuciinapp.adapter.LaundriAdapter
+import com.example.cuciinapp.item.BannerCarouselItem
+import com.example.cuciinapp.model.Banner
+import com.example.cuciinapp.model.LaundriResponse.LaundriResponse
+import com.example.cuciinapp.service.ApiClient
+import com.example.cuciinapp.service.ApiInterface
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import retrofit2.Call
@@ -39,7 +39,7 @@ class FrHomeUser : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rvLaundri.layoutManager = GridLayoutManager(activity!!, 2)
+        rvLaundri.layoutManager = GridLayoutManager(activity!!, 2) as RecyclerView.LayoutManager?
         getData()
 
         val urlGambarBerita = "http://172.168.10.14/cuci_in/images/"

@@ -1,13 +1,15 @@
-package com.example.cuciinproject.adapter
+package com.example.cuciinapp.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
-import com.example.cuciinproject.R
-import com.example.cuciinproject.model.Laundri.Laundri
+import com.example.cuciinapp.R
+import com.example.cuciinapp.activity.OutletActivity
+import com.example.cuciinapp.model.Laundri.Laundri
 import kotlinx.android.synthetic.main.row_layout.view.*
 
 //import com.example.tutorial_retrofit_mysql.R
@@ -34,7 +36,14 @@ class LaundriAdapter (val laundri : ArrayList<Laundri>) : RecyclerView.Adapter<L
         private var laundri : Laundri? = null
 
         override fun onClick(p0: View?) {
+            var id_laundri = laundri!!.id_laundri
+//            val b = Bundle()
+//            b.putSerializable("kode", datax)
+            var intent = Intent(view.context, OutletActivity::class.java)
+            intent.putExtra("id_laundri", id_laundri!!)
+            view.context.startActivity(intent)
 
+//            view.context.startActivity(Intent(view.context, OutletActivity::class.java))
         }
 
         init {

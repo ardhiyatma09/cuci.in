@@ -1,10 +1,10 @@
-package com.example.cuciinproject.adapter
+package com.example.cuciinapp.adapter
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
-import com.example.cuciinproject.fragment.FrBanner
-import com.example.cuciinproject.model.Banner
+import com.example.cuciinapp.fragment.FrBanner
+import com.example.cuciinapp.model.Banner
 
 class BannerAdapter(
     fragmentManager: FragmentManager,

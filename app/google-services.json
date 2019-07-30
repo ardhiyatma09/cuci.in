@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "573923924325",
+    "firebase_url": "https://cuciin-fa57f.firebaseio.com",
+    "project_id": "cuciin-fa57f",
+    "storage_bucket": "cuciin-fa57f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573923924325:android:12b67b437627a14d",
+        "android_client_info": {
+          "package_name": "com.example.cuciinapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573923924325-b3sdi53mcrdr6dp962o40i6e9qbtitk2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cuciinapp",
+            "certificate_hash": "52019e0f8cec9db708895dc419e6213a819548d8"
+          }
+        },
+        {
+          "client_id": "573923924325-t8ldc0g195mt4o42r1sm3jub6dl3nbk6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCroxBHkN_aqu5KgRnXJiRVlYLPPamCi6o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573923924325-t8ldc0g195mt4o42r1sm3jub6dl3nbk6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

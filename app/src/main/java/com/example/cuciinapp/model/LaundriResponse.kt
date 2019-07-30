@@ -1,4 +1,4 @@
-package com.example.cuciinproject.model
+package com.example.cuciinapp.model
 
 import com.google.gson.annotations.SerializedName
 
