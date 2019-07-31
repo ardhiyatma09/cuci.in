@@ -12,10 +12,13 @@ import com.example.cuciinapp.R
 import com.example.cuciinapp.fragment.FrHomeUser
 import com.example.cuciinapp.fragment.FrMyorder
 import com.example.cuciinapp.fragment.FrProfile
+import com.xwray.groupie.GroupAdapter
+import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private var groupAdapter = GroupAdapter<ViewHolder>()
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -53,7 +56,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         val fragment = FrHomeUser()
         addFragment(fragment)
