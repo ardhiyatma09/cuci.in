@@ -12,6 +12,7 @@ import com.example.cuciinapp.R
 import com.example.cuciinapp.fragment.FrHomeUser
 import com.example.cuciinapp.fragment.FrMyorder
 import com.example.cuciinapp.fragment.FrProfile
+import com.google.firebase.auth.FirebaseAuth
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.kotlinandroidextensions.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private var groupAdapter = GroupAdapter<ViewHolder>()
+    lateinit var mAuth: FirebaseAuth
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
@@ -56,6 +58,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        mAuth = FirebaseAuth.getInstance()
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         val fragment = FrHomeUser()
         addFragment(fragment)
@@ -80,6 +85,14 @@ class MainActivity : AppCompatActivity() {
 
         else -> {
             super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val user = mAuth.currentUser
+        if (user == null) {
+            finish()
         }
     }
 }
