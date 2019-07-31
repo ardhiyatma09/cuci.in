@@ -3,31 +3,31 @@
               android:layout_width="match_parent"
               android:layout_height="wrap_content">
 
-        <RelativeLayout
+    <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#EFF2F7">
+
+        <ImageView
+                android:id="@+id/mvPoster"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"/>
+
+        <TextView
+
+                android:id="@+id/mvTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="#EFF2F7">
+                android:layout_below="@id/mvPoster"
+                android:textAlignment="center"
+                android:text="Nama Laundri"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:padding="10dp"/>
 
-            <ImageView
-                    android:id="@+id/mvPoster"
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher"/>
-
-            <TextView
-
-                    android:id="@+id/mvTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/mvPoster"
-                    android:textAlignment="center"
-                    android:text="Nama Laundri"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:padding="10dp"/>
-
-        </RelativeLayout>
+    </RelativeLayout>
 
 </LinearLayout>
