@@ -3,7 +3,6 @@ package com.example.cuciinapp.activity
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import com.example.cuciinapp.R
 import com.example.cuciinapp.model.LaundriResponse
@@ -146,21 +145,24 @@ class OutletActivity : AppCompatActivity() {
         }
     }
 
-    fun getLaundri(id_laundri : Int){
+    fun getLaundri(id_laundri: Int) {
         val apiInterface = ApiClient.getClient().create(ApiInterface::class.java)
         apiInterface.getLaundri(id_laundri).enqueue(object : Callback<LaundriResponse.LaundriResponse> {
             override fun onFailure(call: Call<LaundriResponse.LaundriResponse>, t: Throwable) {
                 Toast.makeText(this@OutletActivity, "Gk iso", Toast.LENGTH_SHORT).show()
             }
 
-            override fun onResponse(call: Call<LaundriResponse.LaundriResponse>, response: Response<LaundriResponse.LaundriResponse>) {
+            override fun onResponse(
+                call: Call<LaundriResponse.LaundriResponse>,
+                response: Response<LaundriResponse.LaundriResponse>
+            ) {
                 if (response.code() == 200) {
                     Log.e("code : ${response.code()}", "${response.body()}")
                     val laundri = response.body()!!.results.get(0)
                     tvNama.text = laundri.namaLaundri
                     tvAlamat.text = laundri.alamat
 
-                }else{
+                } else {
                     Log.e("code : ${response.code()}", response.message())
                 }
             }

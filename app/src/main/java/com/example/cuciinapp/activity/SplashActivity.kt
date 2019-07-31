@@ -8,7 +8,10 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import com.example.cuciinapp.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class SplashActivity : AppCompatActivity() {
 
@@ -16,19 +19,23 @@ class SplashActivity : AppCompatActivity() {
     lateinit var logo : ImageView
     lateinit var animbot : Animation
     lateinit var animtop : Animation
+    var saveuser: String? = null
+
+    val mAuth = FirebaseAuth.getInstance()
+    val user = mAuth.currentUser
 
     private var mDelayHandler: Handler? = null
     private val SPLASH_DELAY: Long = 4000 //4 seconds
     internal val mRunnable: Runnable = Runnable {
 
-        if (!isFinishing) {
 
+        if (!isFinishing) {
             val intent = Intent(applicationContext, LoginActivity::class.java)
 
             startActivity(intent)
 
             finish()
-
+            Toast.makeText(this, "Selamat Datang di CUCIIN.APP", Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -50,9 +57,20 @@ class SplashActivity : AppCompatActivity() {
         mDelayHandler = Handler()
 
         //Navigate with delay
+        if (user == null) {
+            mDelayHandler!!.postDelayed(mRunnable, SPLASH_DELAY)
+        } else {
+            updateUI(user)
+//            Toast.makeText(this, "${user}", Toast.LENGTH_SHORT).show()
+        }
 
-        mDelayHandler!!.postDelayed(mRunnable, SPLASH_DELAY)
 
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null)
+            startActivity(Intent(this, MainActivity::class.java))
+        finish()
     }
 
     public override fun onDestroy() {

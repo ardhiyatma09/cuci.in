@@ -11,10 +11,12 @@ import android.widget.Toast
 import com.example.cuciinapp.R
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class LoginActivity : AppCompatActivity() {
 
     val mAuth = FirebaseAuth.getInstance()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +45,9 @@ class LoginActivity : AppCompatActivity() {
         if (!email.isEmpty() && !password.isEmpty()) {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    startActivity(Intent(this, MainActivity::class.java))
+//                    startActivity(Intent(this, MainActivity::class.java))
+                    val user = mAuth.currentUser
+                    updateUI(user)
                     Toast.makeText(this, "Berhasil Login", Toast.LENGTH_SHORT).show()
                 } else {
                     Toast.makeText(this, "Password Salah!", Toast.LENGTH_SHORT).show()
@@ -54,7 +58,22 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateUI(user: FirebaseUser?) {
+        if (user != null)
+            startActivity(Intent(this, MainActivity::class.java))
+        finish()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val user = mAuth.currentUser
+        if (user != null) {
+            updateUI(user)
+        }
+    }
+
     private fun register() {
         startActivity(Intent(this, RegisterActivity::class.java))
     }
+
 }
