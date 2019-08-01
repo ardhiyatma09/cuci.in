@@ -33,7 +33,6 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"/>
 
-
         <TextView
                 android:layout_below="@+id/avatar"
                 android:id="@+id/namaprofile"

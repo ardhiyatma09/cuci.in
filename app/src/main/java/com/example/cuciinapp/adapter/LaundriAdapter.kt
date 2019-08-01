@@ -15,23 +15,23 @@ import kotlinx.android.synthetic.main.row_layout.view.*
 //import com.example.tutorial_retrofit_mysql.R
 //import com.example.tutorial_retrofit_mysql.model.Laundri.Laundri
 
-class LaundriAdapter(val laundri: ArrayList<Laundri>) : RecyclerView.Adapter<LaundriAdapter.MovieViewHolder>() {
+class LaundriAdapter(val laundri: ArrayList<Laundri>) : RecyclerView.Adapter<LaundriAdapter.LaundriViewHolder>() {
 
     lateinit var mContext: Context
 
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LaundriViewHolder, position: Int) {
         holder.bind(laundri.get(position))
 
     }
 
     override fun getItemCount() = laundri.size
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaundriViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.row_layout, parent, false)
-        return MovieViewHolder(view)
+        return LaundriViewHolder(view)
     }
 
-    class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+    class LaundriViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         private var view: View = itemView
         private var laundri: Laundri? = null
 

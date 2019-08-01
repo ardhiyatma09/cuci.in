@@ -1,8 +1,10 @@
 package com.example.cuciinapp.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.example.cuciinapp.R
 import com.example.cuciinapp.model.LaundriResponse
@@ -19,6 +21,13 @@ class OutletActivity : AppCompatActivity() {
     var idjumlahpakaian: String? = null
     var id_jumlahtas: String? = null
     var id_jumlahsepatu: String? = null
+    var subpakaian: String? = null
+    var subtas: String? = null
+    var subsepatu: String? = null
+    var grandtotal: String? = null
+    var ongkir: String? = null
+    var total: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -143,6 +152,28 @@ class OutletActivity : AppCompatActivity() {
             finish()
 
         }
+        btn_order.setOnClickListener {
+//            val b = Bundle()
+//            b.putSerializable("kode", datax)
+            if (idjumlahpakaian.toString().equals("0") &&
+                id_jumlahtas.toString().equals("0") &&
+                id_jumlahsepatu.toString().equals("0")){
+
+                Toast.makeText(this@OutletActivity, "Tidak boleh kosong" , Toast.LENGTH_SHORT).show()
+            }else{
+                var intent = Intent(this, OrderActivity::class.java)
+                intent.putExtra("id_jumpakaian", idjumlahpakaian!!)
+                intent.putExtra("id_jumtas", id_jumlahtas!!)
+                intent.putExtra("id_jumsepatu", id_jumlahsepatu!!)
+                intent.putExtra("subpakaian", subpakaian!!)
+                intent.putExtra("subtas", subtas!!)
+                intent.putExtra("subsepatu", subsepatu!!)
+                intent.putExtra("grandtotal", grandtotal!!)
+                intent.putExtra("ongkir", ongkir!!)
+                intent.putExtra("total", total!!)
+                startActivity(intent)
+            }
+        }
     }
 
     fun getLaundri(id_laundri: Int) {
@@ -181,7 +212,17 @@ class OutletActivity : AppCompatActivity() {
         val jum_pakaian = pakaian * 10000
         val jum_tas = tas * 12000
         val jum_sepatu = sepatu * 25000
-        val total = jum_pakaian + jum_tas + jum_sepatu
-        return total
+
+        subpakaian = jum_pakaian.toString()
+        subtas = jum_tas.toString()
+        subsepatu = jum_sepatu.toString()
+
+        val qty = pakaian + tas + sepatu
+        ongkir = (qty * 2000).toString()
+
+        val sum = jum_pakaian + jum_tas + jum_sepatu
+        grandtotal = sum.toString()
+        total = (grandtotal!!.toInt() + ongkir!!.toInt()).toString()
+        return sum
     }
 }

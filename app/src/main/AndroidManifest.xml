@@ -11,17 +11,18 @@
             android:networkSecurityConfig="@xml/network_security_config"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name="com.example.cuciinapp.activity.MainActivity">
+        <activity android:name="com.example.cuciinapp.activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="com.example.cuciinapp.activity.SplashActivity"/>
+        <activity android:name="com.example.cuciinapp.activity.MainActivity"/>
         <activity android:name="com.example.cuciinapp.activity.LoginActivity"/>
         <activity android:name="com.example.cuciinapp.activity.RegisterActivity"/>
         <activity android:name=".activity.OutletActivity"/>
+        <activity android:name=".activity.OrderActivity"/>
     </application>
 
 </manifest>
