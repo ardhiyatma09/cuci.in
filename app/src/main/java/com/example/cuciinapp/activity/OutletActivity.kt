@@ -18,6 +18,7 @@ import retrofit2.Response
 class OutletActivity : AppCompatActivity() {
 
     var id_laundri : Int? = null
+    var namaLaundri : String? = null
     var idjumlahpakaian: String? = null
     var id_jumlahtas: String? = null
     var id_jumlahsepatu: String? = null
@@ -34,6 +35,7 @@ class OutletActivity : AppCompatActivity() {
         setContentView(R.layout.outlet_activity)
 
         id_laundri = intent.getIntExtra("id_laundri", 0)
+        namaLaundri = intent.getStringExtra("namaLaundri")
 //        Toast.makeText(this, "${id_laundri}", Toast.LENGTH_SHORT).show()
         getLaundri(id_laundri!!)
 
@@ -162,6 +164,8 @@ class OutletActivity : AppCompatActivity() {
                 Toast.makeText(this@OutletActivity, "Tidak boleh kosong" , Toast.LENGTH_SHORT).show()
             }else{
                 var intent = Intent(this, OrderActivity::class.java)
+                intent.putExtra("id_laundri", id_laundri!!)
+                intent.putExtra("namaLaundri", namaLaundri!!)
                 intent.putExtra("id_jumpakaian", idjumlahpakaian!!)
                 intent.putExtra("id_jumtas", id_jumlahtas!!)
                 intent.putExtra("id_jumsepatu", id_jumlahsepatu!!)

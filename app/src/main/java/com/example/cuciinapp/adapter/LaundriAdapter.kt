@@ -37,10 +37,12 @@ class LaundriAdapter(val laundri: ArrayList<Laundri>) : RecyclerView.Adapter<Lau
 
         override fun onClick(p0: View?) {
             var id_laundri = laundri!!.id_laundri
+            var namaLaundri = laundri!!.namaLaundri
 //            val b = Bundle()
 //            b.putSerializable("kode", datax)
             var intent = Intent(view.context, OutletActivity::class.java)
             intent.putExtra("id_laundri", id_laundri!!)
+            intent.putExtra("namaLaundri", namaLaundri!!)
             view.context.startActivity(intent)
 
 //            view.context.startActivity(Intent(view.context, OutletActivity::class.java))
@@ -54,7 +56,7 @@ class LaundriAdapter(val laundri: ArrayList<Laundri>) : RecyclerView.Adapter<Lau
         fun bind(laundri: Laundri) {
             this.laundri = laundri
 //            val imageUrl = StringBuilder()
-            val urlGambarBerita = "http://172.168.10.14/cuci_in/images/" + laundri.foto
+            val urlGambarBerita = "http://172.168.10.7/cuci_in/images/" + laundri.foto
             Glide.with(view.context)
                 .load(urlGambarBerita)
                 .into(view.mvPoster)

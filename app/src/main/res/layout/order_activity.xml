@@ -70,7 +70,7 @@
 
         </RelativeLayout>
         <EditText
-                android:id="@+id/et_description"
+                android:id="@+id/et_alamat"
                 android:inputType="textMultiLine"
                 android:lines="4"
                 android:minLines="4"
@@ -462,6 +462,22 @@
                     android:gravity="right"/>
         </RelativeLayout>
     </RelativeLayout>
+        <android.support.design.widget.CollapsingToolbarLayout
+                android:id="@+id/id_make_order"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/ll_grub3"
+                android:background="@color/biruDesain">
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Make Order"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp"
+                    android:textAlignment="center"/>
+        </android.support.design.widget.CollapsingToolbarLayout>
     </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

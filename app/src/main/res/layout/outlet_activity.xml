@@ -182,7 +182,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp">
         <ImageView
-                android:src="@drawable/pakaian"
+                android:src="@drawable/sepatu"
                 android:layout_width="50dp"
                 android:layout_height="50dp"/>
         <LinearLayout
@@ -242,9 +242,10 @@
             android:layout_width="match_parent"
             android:layout_height="55dp">
         <ImageView
-                android:src="@drawable/pakaian"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
+                android:src="@drawable/tas"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"/>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="170dp"
