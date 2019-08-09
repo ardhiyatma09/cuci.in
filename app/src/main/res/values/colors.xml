@@ -6,4 +6,5 @@
 
     <!-- Warna Desain Biru -->
     <color name="biruDesain">#A3D4F7</color>
+    <color name="transBack">#74A2A2A2</color>
 </resources>

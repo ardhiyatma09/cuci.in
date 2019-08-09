@@ -41,12 +41,18 @@ class RegisterActivity : AppCompatActivity() {
         val emailTxt = findViewById<View>(R.id.email) as EditText
         val passwordTxt = findViewById<View>(R.id.password) as EditText
         val namaTxt = findViewById<View>(R.id.nama) as EditText
+        val alamatTxt = findViewById<View>(R.id.alamat) as EditText
+        val nomorTxt = findViewById<View>(R.id.nomor_telepon) as EditText
 
+        var pengguna = "User"
+        var admin = "Admin"
         var email = emailTxt.text.toString()
         var nama = namaTxt.text.toString()
         var password = passwordTxt.text.toString()
+        var alamat = alamatTxt.text.toString()
+        var nomor = nomorTxt.text.toString()
 
-        if (!nama.isEmpty() && !email.isEmpty() && !password.isEmpty()) {
+        if (!nama.isEmpty() && !email.isEmpty() && !password.isEmpty() && !alamat.isEmpty() && !nomor.isEmpty()) {
             mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, OnCompleteListener { task ->
                     if (task.isSuccessful) {
@@ -55,10 +61,19 @@ class RegisterActivity : AppCompatActivity() {
                         mDatabase.child(uid).child("ID").setValue(uid)
                         mDatabase.child(uid).child("Nama").setValue(nama)
                         mDatabase.child(uid).child("Email").setValue(email)
+                        mDatabase.child(uid).child("Alamat").setValue(alamat)
+                        mDatabase.child(uid).child("Kontak").setValue(nomor)
+                        mDatabase.child(uid).child("Password").setValue(password)
+                        if (email.split("@")[1].equals("cuciin.com")) {
+                            mDatabase.child(uid).child("Status").setValue(admin)
+                        } else {
+                            mDatabase.child(uid).child("Status").setValue(pengguna)
+                        }
                         Toast.makeText(this, "Berhasil Daftar", Toast.LENGTH_SHORT).show()
                         startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
+                        finish()
                     } else {
-                        Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Email Anda Sudah Terdaftar!!!", Toast.LENGTH_SHORT).show()
                     }
                 })
         } else {
