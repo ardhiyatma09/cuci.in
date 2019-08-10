@@ -107,7 +107,7 @@ class OrderActivity: AppCompatActivity() {
             }
             Toast.makeText(this@OrderActivity, "Data berhasil ditambah",
                 Toast.LENGTH_SHORT).show()
-            onBackPressed()
+//            onBackPressed()
 //            startActivity(Intent(this@OrderActivity, MainActivity::class.java))
         }
 

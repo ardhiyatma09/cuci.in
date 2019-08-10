@@ -40,13 +40,11 @@ class FrMyorder : Fragment() {
         rvMyorder!!.layoutManager = LinearLayoutManager(activity!!)
         rvMyorder!!.setHasFixedSize(true)
         fAuth = FirebaseAuth.getInstance()
-        helperPrefs = PrefsHelper(activity!!)
 
         val uidUser = helperPrefs.getUI()
-        val counterID = helperPrefs.getCounterId()
 
         dbref = FirebaseDatabase.getInstance().getReference("Transaksi")
-        dbref.addValueEventListener(object : ValueEventListener {
+        dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 list = ArrayList<MyOrderModel>()
                 for (dataSnapshot in p0.children){
@@ -54,11 +52,11 @@ class FrMyorder : Fragment() {
                     if (addDataAll!!.getId_user() == uidUser){
                     addDataAll!!.setKey(dataSnapshot.key!!)
                     list.add(addDataAll!!)
-                    myorderAdapter = MyOrderAdapter(activity!!, list)
+                    myorderAdapter = MyOrderAdapter(activity!!.applicationContext, list)
                     rvMyorder!!.adapter = myorderAdapter
-
                     }
-//                    Log.e("view", "${dataSnapshot}")
+//                    Log.e("TAG_ERROR", "${list}")
+                    Log.e("view", "${dataSnapshot}")
                 }
             }
 

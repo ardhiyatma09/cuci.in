@@ -155,8 +155,6 @@ class OutletActivity : AppCompatActivity() {
 
         }
         btn_order.setOnClickListener {
-//            val b = Bundle()
-//            b.putSerializable("kode", datax)
             if (idjumlahpakaian.toString().equals("0") &&
                 id_jumlahtas.toString().equals("0") &&
                 id_jumlahsepatu.toString().equals("0")){
@@ -192,13 +190,13 @@ class OutletActivity : AppCompatActivity() {
                 response: Response<LaundriResponse.LaundriResponse>
             ) {
                 if (response.code() == 200) {
-                    Log.e("code : ${response.code()}", "${response.body()}")
+//                    Log.e("code : ${response.code()}", "${response.body()}")
                     val laundri = response.body()!!.results.get(0)
                     tvNama.text = laundri.namaLaundri
                     tvAlamat.text = laundri.alamat
 
                 } else {
-                    Log.e("code : ${response.code()}", response.message())
+//                    Log.e("code : ${response.code()}", response.message())
                 }
             }
         })

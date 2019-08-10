@@ -89,10 +89,10 @@ class FrHomeUser : Fragment() {
 
             override fun onResponse(call: Call<LaundriResponse>, response: Response<LaundriResponse>) {
                 if (response.code() == 200) {
-                    Log.e("code : ${response.code()}", "${response.body()}")
+//                    Log.e("code : ${response.code()}", "${response.body()}")
                     rvLaundri.adapter = LaundriAdapter(response.body()!!.results)
                 } else {
-                    Log.e("code : ${response.code()}", response.message())
+//                    Log.e("code : ${response.code()}", response.message())
                 }
             }
         })
