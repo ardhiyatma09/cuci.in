@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.cuciinapp.R
 import com.example.cuciinapp.activity.LoginActivity
+import com.example.cuciinapp.activity.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fr_profile_activity.*
 

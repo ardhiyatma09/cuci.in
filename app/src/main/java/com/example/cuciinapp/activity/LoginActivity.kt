@@ -42,13 +42,24 @@ class LoginActivity : AppCompatActivity() {
         var email = emailTxt.text.toString()
         var password = passwordTxt.text.toString()
 
+        //admin@cuci.in
+        //admin[0]
+        //cuci.in[1]
+
         if (!email.isEmpty() && !password.isEmpty()) {
             mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener { task ->
                 if (task.isSuccessful) {
 //                    startActivity(Intent(this, MainActivity::class.java))
                     val user = mAuth.currentUser
-                    updateUI(user)
-                    Toast.makeText(this, "Berhasil Login", Toast.LENGTH_SHORT).show()
+                    if (email.split("@")[1].equals("cuciin.com")) {
+                        startActivity(Intent(this, HomeAdmin::class.java))
+                        Toast.makeText(this, "Berhasil login ! Admin", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }else{
+                        updateUI(user)
+                        Toast.makeText(this, "Berhasil login", Toast.LENGTH_SHORT).show()
+                    }
+
                 } else {
                     Toast.makeText(this, "Password Salah!", Toast.LENGTH_SHORT).show()
                 }
@@ -60,7 +71,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun updateUI(user: FirebaseUser?) {
         if (user != null)
-            startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, MainActivity::class.java))
         finish()
     }
 

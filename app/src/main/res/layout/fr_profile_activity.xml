@@ -8,14 +8,7 @@
             android:id="@+id/bg"
             android:background="@drawable/backgroundbanner"
             android:layout_width="match_parent"
-            android:layout_height="260dp">
-        <ImageView
-                android:src="@drawable/arrowleft"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:id="@+id/btn_back"
-                android:layout_margin="15dp"/>
-    </RelativeLayout>
+            android:layout_height="260dp"/>
 
     <RelativeLayout
             android:id="@+id/pro"
@@ -27,7 +20,7 @@
             android:layout_height="450dp">
         <ImageView
                 android:id="@+id/avatar"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="100dp"
                 android:src="@drawable/avatar"
                 android:layout_centerHorizontal="true"
                 android:layout_width="70dp"
