@@ -54,7 +54,7 @@ class LaundriAdapter(val laundri: ArrayList<Laundri>) : RecyclerView.Adapter<Lau
         fun bind(laundri: Laundri) {
             this.laundri = laundri
 //            val imageUrl = StringBuilder()
-            val urlGambarBerita = "http://172.168.10.14/cuci_in/images/" + laundri.foto
+            val urlGambarBerita = "http://172.168.10.7/cuci_in/images/" + laundri.foto
             Glide.with(view.context)
                 .load(urlGambarBerita)
                 .into(view.mvPoster)
