@@ -26,6 +26,7 @@
         <activity android:name=".activity.OrderActivity"/>
         <activity android:name=".activity.SettingActivity"
                   android:theme="@style/Theme.Transparent"/>
+        <activity android:name=".activity.TrDetailActivity"/>
     </application>
 
 </manifest>

@@ -108,7 +108,7 @@ class OrderActivity: AppCompatActivity() {
             Toast.makeText(this@OrderActivity, "Data berhasil ditambah",
                 Toast.LENGTH_SHORT).show()
 //            onBackPressed()
-//            startActivity(Intent(this@OrderActivity, MainActivity::class.java))
+            startActivity(Intent(this@OrderActivity, MainActivity::class.java))
         }
 
     }
@@ -125,6 +125,7 @@ class OrderActivity: AppCompatActivity() {
         dbRef.child("id_user").setValue(uidUser)
         dbRef.child("status").setValue("Proses")
         dbRef.child("alamat").setValue("Jl wow")
+        dbRef.child("subtotal").setValue(grandtotal.toString())
         dbRef.child("ongkir").setValue(ongkir.toString())
         dbRef.child("total").setValue(total.toString())
 
@@ -152,7 +153,7 @@ class OrderActivity: AppCompatActivity() {
         dbRef.child("id_transaksi").setValue(id_transaksi!!.toInt())
         dbRef.child("jenis").setValue("Tas")
         dbRef.child("qty").setValue(id_jumlahtas.toString())
-        dbRef.child("harga").setValue(subpakaian.toString())
+        dbRef.child("harga").setValue(subtas.toString())
 
         helperPref.saveCounterDetail(CounterDetailId+1)
     }
