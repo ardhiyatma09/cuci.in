@@ -64,6 +64,7 @@ class RegisterActivity : AppCompatActivity() {
                         mDatabase.child(uid).child("Alamat").setValue(alamat)
                         mDatabase.child(uid).child("Kontak").setValue(nomor)
                         mDatabase.child(uid).child("Password").setValue(password)
+                        mDatabase.child(uid).child("bukti").setValue("null")
                         if (email.split("@")[1].equals("cuciin.com")) {
                             mDatabase.child(uid).child("Status").setValue(admin)
                         } else {

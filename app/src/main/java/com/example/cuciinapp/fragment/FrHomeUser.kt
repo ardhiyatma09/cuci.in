@@ -74,8 +74,6 @@ class FrHomeUser : Fragment() {
 
         // declare banner carousel
         val bannerCarouselItem = BannerCarouselItem(promos, childFragmentManager)
-
-
         groupAdapter.add(bannerCarouselItem)
     }
 

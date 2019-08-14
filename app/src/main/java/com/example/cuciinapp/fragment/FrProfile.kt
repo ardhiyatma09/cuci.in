@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.example.cuciinapp.R
 import com.example.cuciinapp.activity.LoginActivity
 import com.example.cuciinapp.activity.PrefsHelper
@@ -38,16 +39,25 @@ class FrProfile : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         fAuth = FirebaseAuth.getInstance()
         helperPrefs = PrefsHelper(activity!!)
+        Glide.with(view.context)
+            .load(R.drawable.avatar)
+            .into(view.avatar)
 //        nama.setText(fUser)
 
         val dbRefUser = FirebaseDatabase.getInstance().getReference("Akun/${helperPrefs.getUI()}")
-        dbRefUser.addListenerForSingleValueEvent(object : ValueEventListener {
+        dbRefUser.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
 
             }
 
             override fun onDataChange(p0: DataSnapshot) {
                 Log.e("uid", helperPrefs.getUI())
+                if (p0.child("/bukti").value.toString() != "null") {
+                    Glide.with(view.context)
+                        .load(p0.child("/bukti").value.toString())
+                        .into(view.avatar)
+                }
+
                 view.nama.text = p0.child("/Nama").value.toString()
                 view.alamat.text = p0.child("/Alamat").value.toString()
                 view.kontak.text = p0.child("/Kontak").value.toString()
