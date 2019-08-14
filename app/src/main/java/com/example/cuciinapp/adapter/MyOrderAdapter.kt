@@ -2,6 +2,7 @@ package com.example.cuciinapp.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -48,13 +49,12 @@ class MyOrderAdapter : RecyclerView.Adapter<MyOrderAdapter.MyOrderViewHolder> {
 //            Toast.makeText(mContext, "${p0.idtransaksi.text}/${p0.idlaundri.text}",
 //                Toast.LENGTH_SHORT).show()
             var idtransaksi = idtrans.toLong()
-            var namaLaundri = myorderModel.getNama_laundri()
 //            val b = Bundle()
 //            b.putSerializable("kode", datax)
             var intent = Intent(mContext, TrDetailActivity::class.java)
             intent.putExtra("idtransaksi", idtransaksi!!)
-            intent.putExtra("namaLaundri", namaLaundri!!)
-            mContext.startActivity(intent)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            mContext.applicationContext.startActivity(intent)
         }
 
 

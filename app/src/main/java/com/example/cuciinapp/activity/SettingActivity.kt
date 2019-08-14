@@ -38,8 +38,8 @@ class SettingActivity : AppCompatActivity() {
 
     val mAuth = FirebaseAuth.getInstance()
     val REQUEST_IMAGE = 10002
-    val PERMISSION_REQUEST_CODE = 1001
-    val PICK_IMAGE_REQUEST = 900
+    val PERMISSION_REQUEST_CODE = 10003
+    var value = 0.0
 
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -122,10 +122,8 @@ class SettingActivity : AppCompatActivity() {
             val update_kontak = kontak_update.text.toString()
             val update_email = email_update.text.toString()
 
-            if (!update_alamat.isNotEmpty() && !update_email.isNotEmpty() && !update_nama.isNotEmpty()) {
-                simpanToFireBase()
-            }
-
+            if (update_alamat.isNotEmpty() && update_email.isNotEmpty() && update_nama.isNotEmpty()
+                && update_kontak.isNotEmpty()) {
 
             dbRef.child("Akun/$uidUser/Nama").setValue(update_nama)
             dbRef.child("Akun/$uidUser/Alamat").setValue(update_alamat)
@@ -133,6 +131,9 @@ class SettingActivity : AppCompatActivity() {
             dbRef.child("Akun/$uidUser/Email").setValue(update_email)
             Toast.makeText(this, "Sukses!!", Toast.LENGTH_SHORT).show()
             finish()
+            }else{
+                Toast.makeText(this@SettingActivity, "Data Profil Harus Di Isi Semua!!", Toast.LENGTH_SHORT).show()
+            }
 
         }
     }
@@ -145,23 +146,16 @@ class SettingActivity : AppCompatActivity() {
         startActivityForResult(Intent.createChooser(intent, "select image"), REQUEST_IMAGE)
     }
 
-
-    private fun chooseFile() {
-        val intent = Intent().apply {
-            type = "image/*"
-            action = Intent.ACTION_GET_CONTENT
-        }
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST)
-    }
-
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         when (requestCode) {
             PERMISSION_REQUEST_CODE -> {
-                if (grantResults.isEmpty() || grantResults[0] == PackageManager.PERMISSION_GRANTED)
-                    Toast.makeText(this@SettingActivity, "Oops! Permission Denied!!", Toast.LENGTH_SHORT).show()
-                else
-                    chooseFile()
+                if (grantResults.isEmpty() || grantResults[0]
+                    == PackageManager.PERMISSION_DENIED){
+                    Toast.makeText(this@SettingActivity, "izin ditolak!!", Toast.LENGTH_SHORT).show()
+                }else{
+                    imageChooser()
+                }
             }
         }
 
@@ -207,21 +201,22 @@ class SettingActivity : AppCompatActivity() {
             show()
         }
         val data = FirebaseStorage.getInstance()
-        var value = 0.0
+
 
         val user = mAuth.currentUser
         val uid = helperPrefs.getUI()
         val nameX = UUID.randomUUID().toString()
         val ref: StorageReference = stoRef
-//            .child("images/$uid/${nameX}.${GetFileExtension(filePath)}")
-        var storage = data.reference.child("Image_Profile/$nameX").putFile(filePath)
-//       ref.putFile(filePath)
+            .child("images/${nameX}.${GetFileExtension(filePath)}")
+//        var storage = data.reference.child("Image_Profile/$nameX").putFile(filePath)
+       ref.putFile(filePath)
             .addOnProgressListener { taskSnapshot ->
                 value = (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount)
             }
             .addOnSuccessListener {
                 ref.downloadUrl.addOnSuccessListener {
-                    simpanToFireBase()
+                        dbRef = FirebaseDatabase.getInstance().getReference("Akun/$uid")
+                        dbRef.child("bukti").setValue(it.toString())
                 }
                 Toast.makeText(this@SettingActivity, "berhasil upload", Toast.LENGTH_SHORT).show()
                 progressDownload.visibility = View.GONE
@@ -234,47 +229,6 @@ class SettingActivity : AppCompatActivity() {
     }
 
     private fun simpanToFireBase() {
-//        dbRef = FirebaseDatabase.getInstance().getReference("Akun")
-//        dbRef.child("imageName").setValue(namex)
-//        dbRef.child("fileurl").setValue(fileurl)
-//
-//        Toast.makeText(this, "Data berhasil ditambah",
-//            Toast.LENGTH_SHORT).show()
-
-        val nameXXX = UUID.randomUUID().toString()
-        val iddest = helperPrefs.getCounterId()
-        val uid = fAuth.currentUser?.uid
-        val storageRef: StorageReference = stoRef
-            .child("images/$uid/$nameXXX.${GetFileExtension(filePath)}")
-        storageRef.putFile(filePath).addOnSuccessListener {
-            storageRef.downloadUrl.addOnSuccessListener {
-                dbRef = FirebaseDatabase.getInstance().getReference("Akun/$uid")
-                dbRef.child("bukti").setValue(it.toString())
-                FirebaseDatabase.getInstance().getReference("Akun/")
-                    .child("${fAuth.uid}/id")
-                    .addListenerForSingleValueEvent(
-                        object : ValueEventListener {
-                            override fun onDataChange(p0: DataSnapshot) {
-                                dbRef.child("iduser").setValue(p0.value)
-                            }
-
-                            override fun onCancelled(p0: DatabaseError) {
-                                Log.e("Error", p0.message)
-                            }
-
-                        })
-            }
-//            Toast.makeText(
-//                this,
-//                "Success Upload",
-//                Toast.LENGTH_SHORT
-//            ).show()
-            progressDownload.visibility = View.GONE
-        }.addOnFailureListener {
-            Log.e("TAG_ERROR", it.message)
-        }.addOnProgressListener { taskSnapshot ->
-            //            progressDownload.visibility = View.VISIBLE
-        }
 
     }
 }

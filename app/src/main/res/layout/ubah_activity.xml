@@ -14,14 +14,14 @@
             android:padding="20dp"
             android:layout_height="410dp"
             android:orientation="vertical">
-        <!--<de.hdodenhof.circleimageview.CircleImageView-->
-                <!--android:layout_gravity="center"-->
-                <!--android:src="@drawable/avata"-->
-                <!--android:layout_width="120dp"-->
-                <!--android:layout_height="120dp"-->
-                <!--android:layout_marginTop="20dp"-->
-                <!--android:layout_marginBottom="30dp"-->
-                <!--android:id="@+id/img_upload"/>-->
+        <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_gravity="center"
+                android:src="@drawable/avatar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:id="@+id/img_upload"/>
 
         <LinearLayout
                 android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                     android:layout_below="@+id/avatar"
                     android:textSize="15dp"
                     android:textColor="#414040"
-                    android:text="Nama      :"
+                    android:text="Nama      "
                     android:layout_weight="3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -54,7 +54,7 @@
                     android:layout_below="@+id/avatar"
                     android:textSize="15dp"
                     android:textColor="#414040"
-                    android:text="Alamat    :"
+                    android:text="Alamat    "
                     android:layout_weight="3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -77,7 +77,7 @@
                     android:layout_below="@+id/avatar"
                     android:textSize="15dp"
                     android:textColor="#414040"
-                    android:text="Kontak    :"
+                    android:text="Kontak    "
                     android:layout_weight="3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -100,7 +100,7 @@
                     android:layout_below="@+id/avatar"
                     android:textSize="15dp"
                     android:textColor="#414040"
-                    android:text="Email       :"
+                    android:text="Email       "
                     android:layout_weight="3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
