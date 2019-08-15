@@ -3,12 +3,12 @@ package com.example.cuciinapp.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.cuciinapp.R
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.order_activity.*
 
 class OrderActivity: AppCompatActivity() {
@@ -38,6 +38,8 @@ class OrderActivity: AppCompatActivity() {
 
         helperPref = PrefsHelper(this)
         fAuth = FirebaseAuth.getInstance()
+
+        getDataAdmin()
 
         id_laundri = intent.getIntExtra("id_laundri",0)
         namaLaundri = intent.getStringExtra("namaLaundri")
@@ -109,22 +111,41 @@ class OrderActivity: AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()
 //            onBackPressed()
             startActivity(Intent(this@OrderActivity, MainActivity::class.java))
+            finish()
         }
 
+    }
+
+    fun getDataAdmin(){
+        val uidUser = helperPref.getUI()
+        val dbRefUser = FirebaseDatabase.getInstance().getReference("Akun/${uidUser}")
+        dbRefUser.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                Log.e("uid", helperPref.getUI())
+                et_alamat.setText(p0.child("/Alamat").value.toString())
+//                Toast.makeText(this@HomeAdmin, "${id_laundri.toString()}", Toast.LENGTH_SHORT).show()
+//                Log.e("lol", "${p0}")
+            }
+
+        })
     }
 
     fun simpanTransaksi(){
         val uidUser = helperPref.getUI()
         val CounterId = helperPref.getCounterId()
         id_transaksi = helperPref.getCounterId()
-        val user = fAuth.currentUser!!
+        val alamat = et_alamat.text.toString()
         dbRef = FirebaseDatabase.getInstance().getReference("Transaksi/${id_transaksi!!.toInt()}")
         dbRef.child("id_transaksi").setValue(id_transaksi!!.toInt())
         dbRef.child("id_laundri").setValue(id_laundri!!.toInt())
         dbRef.child("nama_laundri").setValue(namaLaundri!!.toString())
         dbRef.child("id_user").setValue(uidUser)
         dbRef.child("status").setValue("Proses")
-        dbRef.child("alamat").setValue("Jl wow")
+        dbRef.child("alamat").setValue(alamat!!.toString())
         dbRef.child("subtotal").setValue(grandtotal.toString())
         dbRef.child("ongkir").setValue(ongkir.toString())
         dbRef.child("total").setValue(total.toString())

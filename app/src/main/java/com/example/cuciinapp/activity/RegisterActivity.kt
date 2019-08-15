@@ -67,11 +67,12 @@ class RegisterActivity : AppCompatActivity() {
                         mDatabase.child(uid).child("bukti").setValue("null")
                         if (email.split("@")[1].equals("cuciin.com")) {
                             mDatabase.child(uid).child("Status").setValue(admin)
+                            startActivity(Intent(this@RegisterActivity, HomeAdmin::class.java))
                         } else {
                             mDatabase.child(uid).child("Status").setValue(pengguna)
+                            startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
                         }
                         Toast.makeText(this, "Berhasil Daftar", Toast.LENGTH_SHORT).show()
-                        startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
                         finish()
                     } else {
                         Toast.makeText(this, "Email Anda Sudah Terdaftar!!!", Toast.LENGTH_SHORT).show()

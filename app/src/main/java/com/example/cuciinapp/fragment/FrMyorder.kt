@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.cuciinapp.R
+import kotlinx.android.synthetic.main.fr_myorder_activity.*
 import com.example.cuciinapp.activity.PrefsHelper
 import com.example.cuciinapp.adapter.MyOrderAdapter
 import com.example.cuciinapp.model.MyOrderModel

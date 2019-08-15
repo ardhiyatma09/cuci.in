@@ -28,16 +28,19 @@ class MainActivity : AppCompatActivity() {
                 val fragment = FrHomeUser()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
+                finish()
             }
             R.id.navigation_order -> {
                 val fragment = FrMyorder()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
+                finish()
             }
             R.id.navigation_profile -> {
                 val fragment = FrProfile()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
+                finish()
             }
         }
         false

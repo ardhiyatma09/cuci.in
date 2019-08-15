@@ -47,29 +47,41 @@ class LoginActivity : AppCompatActivity() {
         //admin@cuci.in
         //admin[0]
         //cuci.in[1]
-        if (email.split("@")[1].equals("cuci.in")) {
 
-        }
+            //admin@cuci.in
+            //admin[0]
+            //cuci.in[1]
 
-        if (!email.isEmpty() && !password.isEmpty()) {
-            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener { task ->
-                if (task.isSuccessful) {
+            if (!email.isEmpty() && !password.isEmpty()) {
+                mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this, OnCompleteListener { task ->
+                        if (task.isSuccessful) {
 //                    startActivity(Intent(this, MainActivity::class.java))
-                    val user = mAuth.currentUser
-                    updateUI(user)
-                    Toast.makeText(this, "Berhasil Login", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(this, "Password Salah!", Toast.LENGTH_SHORT).show()
-                }
-            })
-        } else {
-            Toast.makeText(this, "Isi Form dengan lengkap!!", Toast.LENGTH_SHORT).show()
-        }
-    }
+                            val user = mAuth.currentUser
+                            if (email.split("@")[1].equals("cuciin.com")) {
+                                helperPrefs.saveUID(user!!.uid) //berfungsi untuk save uid ke sharedpreferences
+                                helperPrefs.saveStatus("Admin")
+                                startActivity(Intent(this, HomeAdmin::class.java))
+                                Toast.makeText(this, "Berhasil login ! Admin", Toast.LENGTH_SHORT).show()
+                                finish()
+                            } else {
+                                updateUI(user)
+                                Toast.makeText(this, "Berhasil login", Toast.LENGTH_SHORT).show()
+                            }
 
+                        } else {
+                            Toast.makeText(this, "Password Salah!", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+            } else {
+                Toast.makeText(this, "Isi Form dengan lengkap!!", Toast.LENGTH_SHORT).show()
+            }
+
+    }
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
             helperPrefs.saveUID(user.uid) //berfungsi untuk save uid ke sharedpreferences
+            helperPrefs.saveStatus("User")
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         } else {
@@ -89,5 +101,4 @@ class LoginActivity : AppCompatActivity() {
     private fun register() {
         startActivity(Intent(this, RegisterActivity::class.java))
     }
-
 }

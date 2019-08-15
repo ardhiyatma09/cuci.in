@@ -8,6 +8,7 @@ class PrefsHelper {
     val USER_ID = "uidx"
     val COUNTER_ID = "counter"
     val COUNTER_Detail_ID= "counter_detail"
+    val Status = "Status"
 
     var mContext: Context
     var sharedSet: SharedPreferences
@@ -29,6 +30,16 @@ class PrefsHelper {
 
     fun getUI(): String? {
         return sharedSet.getString(USER_ID, " ")
+    }
+
+    fun saveStatus(uid: String) {
+        val edit = sharedSet.edit()
+        edit.putString(Status, uid)
+        edit.apply()
+    }
+
+    fun Status(): String? {
+        return sharedSet.getString(Status, " ")
     }
 
     fun saveCounterId(counter: Int) {

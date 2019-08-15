@@ -41,6 +41,9 @@ class OutletActivity : AppCompatActivity() {
 
         id_toolbar.visibility = View.INVISIBLE
 
+        btn_chat.setOnClickListener {
+            startActivity(Intent(this,RegisterActivity::class.java))
+        }
         btn_min.setOnClickListener {
 
             val a = idjumlah.text.toString().toInt()
@@ -174,6 +177,7 @@ class OutletActivity : AppCompatActivity() {
                 intent.putExtra("ongkir", ongkir!!)
                 intent.putExtra("total", total!!)
                 startActivity(intent)
+                finish()
             }
         }
     }

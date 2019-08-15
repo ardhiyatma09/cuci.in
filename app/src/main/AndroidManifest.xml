@@ -22,6 +22,7 @@
         <activity android:name="com.example.cuciinapp.activity.MainActivity"/>
         <activity android:name="com.example.cuciinapp.activity.LoginActivity"/>
         <activity android:name="com.example.cuciinapp.activity.RegisterActivity"/>
+        <activity android:name=".activity.HomeAdmin"/>
         <activity android:name=".activity.OutletActivity"/>
         <activity android:name=".activity.OrderActivity"/>
         <activity android:name=".activity.SettingActivity"

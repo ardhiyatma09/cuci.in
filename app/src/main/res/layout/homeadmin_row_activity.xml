@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/ll_row_admin"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="wrap_content">
+
+        <RelativeLayout
+                android:layout_width="330dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="#EEF1F6">
+
+            <TextView
+
+                    android:id="@+id/mvUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Nama User"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:padding="10dp"/>
+            <View
+                    android:background="#D3CFCF"
+                    android:layout_below="@id/mvUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"/>
+
+            <TextView
+                    android:text="Transaksi ?"
+                    android:layout_below="@+id/mvUser"
+                    android:id="@+id/mvTransaksi"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:text="Laundri"
+                    android:layout_below="@+id/mvTransaksi"
+                    android:id="@+id/mvLaundri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+            <TextView
+                    android:background="@color/colorPrimary"
+                    android:text="Status"
+                    android:layout_toRightOf="@+id/mvTransaksi"
+                    android:layout_below="@+id/mvUser"
+                    android:id="@+id/mvStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:padding="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textAlignment="center"/>
+            <TextView
+                    android:text="Rp. 10000"
+                    android:layout_toRightOf="@+id/mvLaundri"
+                    android:layout_below="@+id/mvStatus"
+                    android:id="@+id/mvTotal"
+                    android:gravity="right"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:textStyle="bold"/>
+            <View
+                    android:background="#D3CFCF"
+                    android:layout_below="@id/mvLaundri"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"/>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_below="@id/mvLaundri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
