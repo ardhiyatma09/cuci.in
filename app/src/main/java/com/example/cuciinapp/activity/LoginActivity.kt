@@ -9,13 +9,21 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.example.cuciinapp.R
+import com.example.cuciinapp.data.SettingApi
+import com.example.cuciinapp.utilities.Const
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class LoginActivity : AppCompatActivity() {
 
     val mAuth = FirebaseAuth.getInstance()
+    lateinit var helperPrefs: PrefsHelper
+    internal lateinit var set: SettingApi
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +32,7 @@ class LoginActivity : AppCompatActivity() {
 
         val loginBtn = findViewById<View>(R.id.btn_login) as Button
         val regisTxt = findViewById<View>(R.id.toRegister) as TextView
+        helperPrefs = PrefsHelper(this)
 
         loginBtn.setOnClickListener(View.OnClickListener { View ->
             login()
@@ -41,6 +50,7 @@ class LoginActivity : AppCompatActivity() {
 
         var email = emailTxt.text.toString()
         var password = passwordTxt.text.toString()
+        set = SettingApi(this)
 
         //admin@cuci.in
         //admin[0]
@@ -51,9 +61,27 @@ class LoginActivity : AppCompatActivity() {
                 if (task.isSuccessful) {
 //                    startActivity(Intent(this, MainActivity::class.java))
                     val user = mAuth.currentUser
+                    helperPrefs.saveUID(user!!.uid)
                     if (email.split("@")[1].equals("cuciin.com")) {
                         startActivity(Intent(this, HomeAdmin::class.java))
-                        Toast.makeText(this, "Berhasil login ! Admin", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Berhasil login Admin!", Toast.LENGTH_SHORT).show()
+
+                        val dbRefUser = FirebaseDatabase.getInstance().getReference("Akun/${helperPrefs.getUID()}")
+                        dbRefUser.addValueEventListener((object : ValueEventListener {
+                            override fun onDataChange(p0: DataSnapshot) {
+                                var userid = p0.child("/ID").value.toString()
+                                var nama = p0.child("/Nama").value.toString()
+                                var photo = p0.child("/bukti").value.toString()
+
+                                set.addUpdateSettings(Const.PREF_MY_ID, userid)
+                                set.addUpdateSettings(Const.PREF_MY_NAME, nama)
+                                set.addUpdateSettings(Const.PREF_MY_DP, photo)
+                            }
+
+                            override fun onCancelled(p0: DatabaseError) {
+
+                            }
+                        }))
                         finish()
                     }else{
                         updateUI(user)

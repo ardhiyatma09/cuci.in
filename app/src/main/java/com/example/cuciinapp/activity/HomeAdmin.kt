@@ -28,21 +28,27 @@ class HomeAdmin : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_actionbar,menu)
+        menuInflater.inflate(R.menu.menu_actionbar_admin, menu)
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.action_logout -> {
+        R.id.action_chat -> {
+            startActivity(Intent(this, ChatActivity::class.java))
+            true
+        }
+        R.id.action_signout -> {
             signOut()
             startActivity(Intent(this, LoginActivity::class.java))
             true
         }
 
+
         else -> {
             super.onOptionsItemSelected(item)
         }
     }
+
 
     override fun onResume() {
         super.onResume()

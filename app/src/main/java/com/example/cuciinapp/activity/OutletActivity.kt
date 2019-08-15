@@ -31,6 +31,7 @@ class OutletActivity : AppCompatActivity() {
 
         id_toolbar.visibility = View.INVISIBLE
 
+
         btn_min.setOnClickListener {
 
             val a = idjumlah.text.toString().toInt()
@@ -144,6 +145,8 @@ class OutletActivity : AppCompatActivity() {
             finish()
 
         }
+
+
     }
 
     fun getLaundri(id_laundri: Int) {

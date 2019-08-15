@@ -41,7 +41,7 @@ class FrHomeUser : Fragment() {
         rvLaundri.layoutManager = GridLayoutManager(activity!!, 2)
         getData()
 
-        val urlGambarBerita = "http://172.168.10.14/cuci_in/images/"
+        val urlGambarBerita = "http://172.168.10.7/cuci_in/images/"
         val promos = listOf(
             Banner(
                 image = urlGambarBerita + "/laundri_1.jpg"
