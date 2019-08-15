@@ -182,7 +182,7 @@
             android:layout_width="match_parent"
             android:layout_height="55dp">
         <ImageView
-                android:src="@drawable/pakaian"
+                android:src="@drawable/sepatu"
                 android:layout_width="50dp"
                 android:layout_height="50dp"/>
         <LinearLayout
@@ -242,9 +242,10 @@
             android:layout_width="match_parent"
             android:layout_height="55dp">
         <ImageView
-                android:src="@drawable/pakaian"
-                android:layout_width="50dp"
-                android:layout_height="50dp"/>
+                android:src="@drawable/tas"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"/>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="170dp"
@@ -318,5 +319,15 @@
                     android:textStyle="bold"
                     android:textColor="@android:color/white"/>
         </LinearLayout>
+
+        <Button
+                android:id="@+id/btn_order"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:text="Order"
+                android:layout_gravity="right"
+                android:layout_marginEnd="10dp"
+                android:background="#ffffff"
+        />
     </android.support.v7.widget.Toolbar>
 </RelativeLayout>

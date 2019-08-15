@@ -1,8 +1,8 @@
 package com.example.cuciinapp.activity
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.cuciinapp.R
@@ -17,21 +17,34 @@ import retrofit2.Response
 class OutletActivity : AppCompatActivity() {
 
     var id_laundri : Int? = null
+    var namaLaundri: String? = null
     var idjumlahpakaian: String? = null
     var id_jumlahtas: String? = null
     var id_jumlahsepatu: String? = null
+    var subpakaian: String? = null
+    var subtas: String? = null
+    var subsepatu: String? = null
+    var grandtotal: String? = null
+    var ongkir: String? = null
+    var total: String? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.outlet_activity)
 
         id_laundri = intent.getIntExtra("id_laundri", 0)
+        namaLaundri = intent.getStringExtra("namaLaundri")
 //        Toast.makeText(this, "${id_laundri}", Toast.LENGTH_SHORT).show()
         getLaundri(id_laundri!!)
 
         id_toolbar.visibility = View.INVISIBLE
 
-
+        btn_chat.setOnClickListener {
+            var intent = Intent(this, ChatDetailsActivity::class.java)
+            intent.putExtra("id_user", id_laundri!!)
+            startActivity(intent)
+        }
         btn_min.setOnClickListener {
 
             val a = idjumlah.text.toString().toInt()
@@ -145,8 +158,30 @@ class OutletActivity : AppCompatActivity() {
             finish()
 
         }
+        btn_order.setOnClickListener {
+            if (idjumlahpakaian.toString().equals("0") &&
+                id_jumlahtas.toString().equals("0") &&
+                id_jumlahsepatu.toString().equals("0")
+            ) {
 
-
+                Toast.makeText(this@OutletActivity, "Tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            } else {
+                var intent = Intent(this, OrderActivity::class.java)
+                intent.putExtra("id_laundri", id_laundri!!)
+                intent.putExtra("namaLaundri", namaLaundri!!)
+                intent.putExtra("id_jumpakaian", idjumlahpakaian!!)
+                intent.putExtra("id_jumtas", id_jumlahtas!!)
+                intent.putExtra("id_jumsepatu", id_jumlahsepatu!!)
+                intent.putExtra("subpakaian", subpakaian!!)
+                intent.putExtra("subtas", subtas!!)
+                intent.putExtra("subsepatu", subsepatu!!)
+                intent.putExtra("grandtotal", grandtotal!!)
+                intent.putExtra("ongkir", ongkir!!)
+                intent.putExtra("total", total!!)
+                startActivity(intent)
+                finish()
+            }
+        }
     }
 
     fun getLaundri(id_laundri: Int) {
@@ -161,13 +196,13 @@ class OutletActivity : AppCompatActivity() {
                 response: Response<LaundriResponse.LaundriResponse>
             ) {
                 if (response.code() == 200) {
-                    Log.e("code : ${response.code()}", "${response.body()}")
+//                    Log.e("code : ${response.code()}", "${response.body()}")
                     val laundri = response.body()!!.results.get(0)
                     tvNama.text = laundri.namaLaundri
                     tvAlamat.text = laundri.alamat
 
                 } else {
-                    Log.e("code : ${response.code()}", response.message())
+//                    Log.e("code : ${response.code()}", response.message())
                 }
             }
         })
@@ -185,7 +220,17 @@ class OutletActivity : AppCompatActivity() {
         val jum_pakaian = pakaian * 10000
         val jum_tas = tas * 12000
         val jum_sepatu = sepatu * 25000
-        val total = jum_pakaian + jum_tas + jum_sepatu
-        return total
+
+        subpakaian = jum_pakaian.toString()
+        subtas = jum_tas.toString()
+        subsepatu = jum_sepatu.toString()
+
+        val qty = pakaian + tas + sepatu
+        ongkir = (qty * 2000).toString()
+
+        val sum = jum_pakaian + jum_tas + jum_sepatu
+        grandtotal = sum.toString()
+        total = (grandtotal!!.toInt() + ongkir!!.toInt()).toString()
+        return sum
     }
 }

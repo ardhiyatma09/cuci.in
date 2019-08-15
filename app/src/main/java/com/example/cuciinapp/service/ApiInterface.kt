@@ -1,7 +1,6 @@
 package com.example.cuciinapp.service
 
-//import com.example.testretrofitannas.model.Movie.Movie
-//import com.example.testretrofitannas.model.MovieResponse.MovieResponse
+
 import com.example.cuciinapp.model.LaundriResponse.LaundriResponse
 import retrofit2.Call
 import retrofit2.http.GET

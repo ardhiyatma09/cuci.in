@@ -1,5 +1,6 @@
 package com.example.cuciinapp.activity
 
+import android.annotation.SuppressLint
 import android.app.job.JobInfo
 import android.app.job.JobScheduler
 import android.content.ComponentName
@@ -9,31 +10,34 @@ import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
+import android.view.View
 import com.example.cuciinapp.R
 import com.example.cuciinapp.fragment.FrChat
 import com.example.cuciinapp.service.NotificationService
+import kotlinx.android.synthetic.main.chat_activity.*
 
 class ChatActivity : AppCompatActivity() {
 
-    private var toolbar: Toolbar? = null
     lateinit var fab: FloatingActionButton
     internal lateinit var mJobScheduler: JobScheduler
+    lateinit var helperPref: PrefsHelper
 
+    @SuppressLint("RestrictedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.chat_activity)
 
-        toolbar = findViewById<Toolbar>(R.id.toolbar)
         fab = findViewById<FloatingActionButton>(R.id.add)
-
-        prepareActionBar(toolbar)
-        initComponent()
-
+        helperPref = PrefsHelper(this)
         //setting toolbar
         setSupportActionBar(findViewById(R.id.toolbar))
         //home navigation
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        setSupportActionBar(toolbar)
+
+
+        toolbar.title = "Chat"
+
+        initComponent()
 
         fab.setOnClickListener {
             val i = Intent(this@ChatActivity, SelectFriendActivity::class.java)
@@ -48,6 +52,16 @@ class ChatActivity : AppCompatActivity() {
             builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
             mJobScheduler.schedule(builder.build())
         }
+
+
+        val status = helperPref.Status()
+        if (status.toString().equals("Admin")) {
+            add.visibility = View.VISIBLE
+        } else if (status.toString().equals("User")) {
+            add.visibility = View.GONE
+        }
+
+
     }
 
 
@@ -59,12 +73,5 @@ class ChatActivity : AppCompatActivity() {
         fragmentTransaction.add(R.id.main_container, ctf, "Chat History")
         fragmentTransaction.commit()
 
-    }
-
-    private fun prepareActionBar(toolbar: Toolbar?) {
-        setSupportActionBar(toolbar)
-        val actionBar = supportActionBar
-        actionBar!!.setDisplayHomeAsUpEnabled(false)
-        actionBar.setHomeButtonEnabled(false)
     }
 }

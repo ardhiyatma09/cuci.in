@@ -28,16 +28,19 @@ class MainActivity : AppCompatActivity() {
                 val fragment = FrHomeUser()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
+                finish()
             }
             R.id.navigation_order -> {
                 val fragment = FrMyorder()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
+                finish()
             }
             R.id.navigation_profile -> {
                 val fragment = FrProfile()
                 addFragment(fragment)
                 return@OnNavigationItemSelectedListener true
+                finish()
             }
         }
         false
@@ -78,8 +81,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.action_logout -> {
-            startActivity(Intent(this, LoginActivity::class.java))
+        R.id.action_chat -> {
+            startActivity(Intent(this, ChatActivity::class.java))
             true
         }
 

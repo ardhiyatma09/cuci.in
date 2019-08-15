@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -73,8 +72,6 @@ class FrHomeUser : Fragment() {
 
         // declare banner carousel
         val bannerCarouselItem = BannerCarouselItem(promos, childFragmentManager)
-
-
         groupAdapter.add(bannerCarouselItem)
     }
 
@@ -88,10 +85,10 @@ class FrHomeUser : Fragment() {
 
             override fun onResponse(call: Call<LaundriResponse>, response: Response<LaundriResponse>) {
                 if (response.code() == 200) {
-                    Log.e("code : ${response.code()}", "${response.body()}")
+//                    Log.e("code : ${response.code()}", "${response.body()}")
                     rvLaundri.adapter = LaundriAdapter(response.body()!!.results)
                 } else {
-                    Log.e("code : ${response.code()}", response.message())
+//                    Log.e("code : ${response.code()}", response.message())
                 }
             }
         })

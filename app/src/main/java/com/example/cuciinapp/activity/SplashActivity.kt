@@ -20,6 +20,7 @@ class SplashActivity : AppCompatActivity() {
     lateinit var animbot : Animation
     lateinit var animtop : Animation
     var saveuser: String? = null
+    lateinit var helperPrefs: PrefsHelper
 
     val mAuth = FirebaseAuth.getInstance()
     val user = mAuth.currentUser
@@ -44,6 +45,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.splash_activity)
 
+        helperPrefs = PrefsHelper(this)
         logo = findViewById(R.id.logosplash)
         tv_splash = findViewById(R.id.tv_splash)
         animbot = AnimationUtils.loadAnimation(this, R.anim.frombottom)
@@ -68,8 +70,14 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
+        val status = helperPrefs.Status()
         if (user != null)
-            startActivity(Intent(this, MainActivity::class.java))
+            if (status.toString().equals("Admin")) {
+                startActivity(Intent(this, HomeAdmin::class.java))
+            } else if (status.toString().equals("User")) {
+                startActivity(Intent(this, MainActivity::class.java))
+            }
+
         finish()
     }
 
