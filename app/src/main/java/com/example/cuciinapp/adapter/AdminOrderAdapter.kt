@@ -2,6 +2,7 @@ package com.example.cuciinapp.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +48,14 @@ class AdminOrderAdapter : RecyclerView.Adapter<AdminOrderAdapter.AdminOrderViewH
         p0.idlaundri.text = myorderModel.getNama_laundri()
         p0.status.text = myorderModel.getStatus()
         p0.trTotal.text = "Rp. " + myorderModel.getTotal()
+
+        if (p0.status.text.equals("Konfirmasi")){
+            p0.status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.warning))
+        }else if(p0.status.text.equals("Proses")){
+            p0.status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.biruDesain))
+        }else if(p0.status.text.equals("Selesai")){
+            p0.status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.success))
+        }
 
         val id_user = myorderModel.getId_user().toString()
 //        Toast.makeText(mContext.applicationContext, id_user, Toast.LENGTH_SHORT).show()

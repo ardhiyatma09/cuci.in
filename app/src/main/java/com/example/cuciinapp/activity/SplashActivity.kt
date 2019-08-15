@@ -72,7 +72,7 @@ class SplashActivity : AppCompatActivity() {
     private fun updateUI(user: FirebaseUser?) {
         val status = helperPrefs.Status()
         if (user != null)
-            if (status.toString().equals("Admin")) {
+            if (status.toString().equals("Admin")){
                 startActivity(Intent(this, HomeAdmin::class.java))
             } else if (status.toString().equals("User")) {
                 startActivity(Intent(this, MainActivity::class.java))
