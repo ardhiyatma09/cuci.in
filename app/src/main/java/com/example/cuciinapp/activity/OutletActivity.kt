@@ -41,9 +41,7 @@ class OutletActivity : AppCompatActivity() {
         id_toolbar.visibility = View.INVISIBLE
 
         btn_chat.setOnClickListener {
-            var intent = Intent(this, ChatDetailsActivity::class.java)
-            intent.putExtra("id_user", id_laundri!!)
-            startActivity(intent)
+            startActivity(Intent(this, SelectFriendActivity::class.java))
         }
         btn_min.setOnClickListener {
 

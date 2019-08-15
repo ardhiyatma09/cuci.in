@@ -10,7 +10,6 @@ import android.os.Build
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import com.example.cuciinapp.R
 import com.example.cuciinapp.fragment.FrChat
 import com.example.cuciinapp.service.NotificationService
@@ -52,15 +51,6 @@ class ChatActivity : AppCompatActivity() {
             builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
             mJobScheduler.schedule(builder.build())
         }
-
-
-        val status = helperPref.Status()
-        if (status.toString().equals("Admin")) {
-            add.visibility = View.VISIBLE
-        } else if (status.toString().equals("User")) {
-            add.visibility = View.GONE
-        }
-
 
     }
 
