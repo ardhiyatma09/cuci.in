@@ -67,37 +67,33 @@ class LoginActivity : AppCompatActivity() {
                 .addOnCompleteListener(this, OnCompleteListener { task ->
                     if (task.isSuccessful) {
 //                    startActivity(Intent(this, MainActivity::class.java))
-                            val user = mAuth.currentUser
-                            helperPrefs.saveUID(user!!.uid)
-                            val dbRefUser = FirebaseDatabase.getInstance().getReference("Akun/${helperPrefs.getUI()}")
-                            dbRefUser.addValueEventListener((object : ValueEventListener {
-                                override fun onDataChange(p0: DataSnapshot) {
-                                    var userid = p0.child("/ID").value.toString()
-                                    var nama = p0.child("/Nama").value.toString()
-                                    var photo = p0.child("/bukti").value.toString()
+                        val user = mAuth.currentUser
+                        helperPrefs.saveUID(user!!.uid)
+                        val dbRefUser = FirebaseDatabase.getInstance().getReference("Akun/${helperPrefs.getUI()}")
+                        dbRefUser.addValueEventListener((object : ValueEventListener {
+                            override fun onDataChange(p0: DataSnapshot) {
+                                var userid = p0.child("/ID").value.toString()
+                                var nama = p0.child("/Nama").value.toString()
+                                var photo = p0.child("/bukti").value.toString()
 
-                                    set.addUpdateSettings(Const.PREF_MY_ID, userid)
-                                    set.addUpdateSettings(Const.PREF_MY_NAME, nama)
-                                    set.addUpdateSettings(Const.PREF_MY_DP, photo)
-                                }
-
-                                override fun onCancelled(p0: DatabaseError) {
-
-                                }
-                            }))
-                            if (email.split("@")[1].equals("cuciin.com")) {
-                                helperPrefs.saveUID(user!!.uid) //berfungsi untuk save uid ke sharedpreferences
-                                helperPrefs.saveStatus("Admin")
-                                startActivity(Intent(this, HomeAdmin::class.java))
-                                Toast.makeText(this, "Berhasil login ! Admin", Toast.LENGTH_SHORT).show()
-                                finish()
-                            } else {
-                                updateUI(user)
-                                Toast.makeText(this, "Berhasil login", Toast.LENGTH_SHORT).show()
+                                set.addUpdateSettings(Const.PREF_MY_ID, userid)
+                                set.addUpdateSettings(Const.PREF_MY_NAME, nama)
+                                set.addUpdateSettings(Const.PREF_MY_DP, photo)
                             }
 
+                            override fun onCancelled(p0: DatabaseError) {
+
+                            }
+                        }))
+                        if (email.split("@")[1].equals("cuciin.com")) {
+                            helperPrefs.saveUID(user!!.uid) //berfungsi untuk save uid ke sharedpreferences
+                            helperPrefs.saveStatus("Admin")
+                            startActivity(Intent(this, HomeAdmin::class.java))
+                            Toast.makeText(this, "Berhasil login ! Admin", Toast.LENGTH_SHORT).show()
+                            finish()
                         } else {
-                            Toast.makeText(this, "Email Atau Password Salah!", Toast.LENGTH_SHORT).show()
+                            updateUI(user)
+                            Toast.makeText(this, "Berhasil login", Toast.LENGTH_SHORT).show()
                         }
 
                     } else {
@@ -111,6 +107,7 @@ class LoginActivity : AppCompatActivity() {
     }
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
+            helperPrefs.saveUID(user.uid) //berfungsi untuk save uid ke sharedpreferences
             helperPrefs.saveStatus("User")
             startActivity(Intent(this, MainActivity::class.java))
             finish()
