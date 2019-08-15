@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
-import android.widget.Toast
 import com.example.cuciinapp.R
 import com.example.cuciinapp.adapter.MyOrderDetailAdapter
 import com.example.cuciinapp.fragment.FrMyorder
@@ -20,16 +19,16 @@ import kotlinx.android.synthetic.main.trdetail_activity.status
 
 class TrDetailActivity : AppCompatActivity() {
 
-    private var myorderdetailAdapter : MyOrderDetailAdapter? = null
-    private var rvMyorderDetail : RecyclerView? = null
-    private var list : MutableList<MyOrderModel> = ArrayList<MyOrderModel>()
-    lateinit var dbref : DatabaseReference
+    private var myorderdetailAdapter: MyOrderDetailAdapter? = null
+    private var rvMyorderDetail: RecyclerView? = null
+    private var list: MutableList<MyOrderModel> = ArrayList<MyOrderModel>()
+    lateinit var dbref: DatabaseReference
     lateinit var fAuth: FirebaseAuth
     lateinit var helperPrefs: PrefsHelper
     lateinit var mDatabase: DatabaseReference
 
-    var idtransaksi : String? = null
-    var namaLaundri : String? = null
+    var idtransaksi: String? = null
+    var namaLaundri: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,7 +74,8 @@ class TrDetailActivity : AppCompatActivity() {
 
         })
     }
-    fun getDataTransaksi(id_transaksi : Long){
+
+    fun getDataTransaksi(id_transaksi: Long) {
         val dbRefUser = FirebaseDatabase.getInstance().getReference("Transaksi/${id_transaksi}")
         dbRefUser.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -86,9 +86,9 @@ class TrDetailActivity : AppCompatActivity() {
                 getDataUser(p0.child("/id_user").value.toString())
                 id_trans.text = "Transaksi "+p0.child("/id_transaksi").value.toString()
                 nama_laundri.text = p0.child("/nama_laundri").value.toString()
-                subtotal_detail.text = "Rp. "+p0.child("/subtotal").value.toString()
-                sub_ongkir.text = "Rp. "+p0.child("/ongkir").value.toString()
-                total_my.text = "Rp. "+p0.child("/total").value.toString()
+                subtotal_detail.text = "Rp. " + p0.child("/subtotal").value.toString()
+                sub_ongkir.text = "Rp. " + p0.child("/ongkir").value.toString()
+                total_my.text = "Rp. " + p0.child("/total").value.toString()
                 status.text = p0.child("/status").value.toString()
                 tr_alamat.text = p0.child("/alamat").value.toString()
 
@@ -120,17 +120,18 @@ class TrDetailActivity : AppCompatActivity() {
 
         })
     }
-    fun getDataDetail(){
+
+    fun getDataDetail() {
         dbref = FirebaseDatabase.getInstance().getReference("Detail_Transaksi")
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 list = ArrayList<MyOrderModel>()
-                for (dataSnapshot in p0.children){
+                for (dataSnapshot in p0.children) {
                     val addDataAll = dataSnapshot.getValue(MyOrderModel::class.java)
-                    if (addDataAll!!.getId_transaksi()!!.equals(idtransaksi!!.toLong())){
-                        addDataAll!!.setKey(dataSnapshot.key!!)
-                        list.add(addDataAll!!)
-                        myorderdetailAdapter= MyOrderDetailAdapter(this@TrDetailActivity, list)
+                    if (addDataAll!!.getId_transaksi()!!.equals(idtransaksi!!.toLong())) {
+                        addDataAll.setKey(dataSnapshot.key!!)
+                        list.add(addDataAll)
+                        myorderdetailAdapter = MyOrderDetailAdapter(this@TrDetailActivity, list)
                         rvMyorderDetail!!.adapter = myorderdetailAdapter
                     }
                 }

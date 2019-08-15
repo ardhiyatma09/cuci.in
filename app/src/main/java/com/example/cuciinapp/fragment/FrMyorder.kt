@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.cuciinapp.R
-import kotlinx.android.synthetic.main.fr_myorder_activity.*
 import com.example.cuciinapp.activity.PrefsHelper
 import com.example.cuciinapp.adapter.MyOrderAdapter
 import com.example.cuciinapp.model.MyOrderModel
@@ -18,12 +17,12 @@ import com.google.firebase.database.*
 
 class FrMyorder : Fragment() {
 
-    private var myorderAdapter : MyOrderAdapter? = null
-    private var rvMyorder : RecyclerView? = null
-    private var list : MutableList<MyOrderModel> = ArrayList<MyOrderModel>()
-    lateinit var dbref : DatabaseReference
+    private var myorderAdapter: MyOrderAdapter? = null
+    private var rvMyorder: RecyclerView? = null
+    private var list: MutableList<MyOrderModel> = ArrayList<MyOrderModel>()
+    lateinit var dbref: DatabaseReference
     lateinit var helperPrefs: PrefsHelper
-    lateinit var fAuth : FirebaseAuth
+    lateinit var fAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,13 +47,13 @@ class FrMyorder : Fragment() {
         dbref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 list = ArrayList<MyOrderModel>()
-                for (dataSnapshot in p0.children){
+                for (dataSnapshot in p0.children) {
                     val addDataAll = dataSnapshot.getValue(MyOrderModel::class.java)
-                    if (addDataAll!!.getId_user() == uidUser){
-                    addDataAll!!.setKey(dataSnapshot.key!!)
-                    list.add(addDataAll!!)
-                    myorderAdapter = MyOrderAdapter(activity!!.applicationContext, list)
-                    rvMyorder!!.adapter = myorderAdapter
+                    if (addDataAll!!.getId_user() == uidUser) {
+                        addDataAll.setKey(dataSnapshot.key!!)
+                        list.add(addDataAll)
+                        myorderAdapter = MyOrderAdapter(activity!!.applicationContext, list)
+                        rvMyorder!!.adapter = myorderAdapter
                     }
 //                    Log.e("TAG_ERROR", "${list}")
                     Log.e("view", "${dataSnapshot}")

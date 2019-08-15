@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/ll_row_admin"
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="wrap_content">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_row_admin"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-                android:layout_width="330dp"
+    <RelativeLayout
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="#EEF1F6">
+
+        <TextView
+
+                android:id="@+id/mvUser"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="#EEF1F6">
-
-            <TextView
-
-                    android:id="@+id/mvUser"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="Nama User"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:padding="10dp"/>
-            <View
-                    android:background="#D3CFCF"
-                    android:layout_below="@id/mvUser"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"/>
+                android:textAlignment="center"
+                android:text="Nama User"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:padding="10dp"/>
+        <View
+                android:background="#D3CFCF"
+                android:layout_below="@id/mvUser"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
 
             <TextView
                     android:text="Transaksi ?"

@@ -81,8 +81,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
-        R.id.action_logout -> {
-            startActivity(Intent(this, LoginActivity::class.java))
+        R.id.action_chat -> {
+            startActivity(Intent(this, ChatActivity::class.java))
             true
         }
 

@@ -100,12 +100,12 @@
             android:layout_marginEnd="5dp"
             android:layout_marginTop="20dp">
 
-            <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rvMyorderDetail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvMyorderDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            </android.support.v7.widget.RecyclerView>
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
     <RelativeLayout
@@ -134,14 +134,14 @@
                 android:textSize="15sp"
                 android:layout_margin="5dp"/>
         <TextView
-            android:id="@+id/ongkir_my"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Shipping Cost"
-            android:textSize="15sp"
-            android:layout_below="@id/sub_my"
-            android:textStyle="bold"
-            android:layout_margin="5dp"/>
+                android:id="@+id/ongkir_my"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Shipping Cost"
+                android:textSize="15sp"
+                android:layout_below="@id/sub_my"
+                android:textStyle="bold"
+                android:layout_margin="5dp"/>
         <TextView
                 android:id="@+id/sub_ongkir"
                 android:layout_width="match_parent"

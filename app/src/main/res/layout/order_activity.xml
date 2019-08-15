@@ -1,483 +1,483 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+                android:layout_height="match_parent">
     <android.support.v7.widget.Toolbar
             android:id="@+id/id_toolbar_checkout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#A4D3F7">
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <ImageView
-                android:id="@+id/btn_back_order"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/arrowleft"
-                />
-        <TextView
+        <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Order Information"
-                android:textColor="@android:color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textAlignment="center"/>
-    </RelativeLayout>
+                android:layout_height="wrap_content">
+            <ImageView
+                    android:id="@+id/btn_back_order"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/arrowleft"
+            />
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Order Information"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"/>
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
     <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/id_toolbar_checkout">
-    <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/id_toolbar_checkout">
-
-    <RelativeLayout
-            android:id="@+id/ll_grub1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp">
-
-        <TextView
-                android:id="@+id/tvPickup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pickup Location"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="15dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
-
         <RelativeLayout
-                android:id="@+id/ll_grub1_1"
-                android:layout_width="70dp"
-                android:layout_height="88dp"
-                android:layout_below="@id/tvPickup"
-                android:background="#EFF2F7">
-
-            <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/location"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-            />
-
-        </RelativeLayout>
-        <EditText
-                android:id="@+id/et_alamat"
-                android:inputType="textMultiLine"
-                android:lines="4"
-                android:minLines="4"
-                android:background="#EFF2F7"
-                android:gravity="top|left"
-                android:maxLines="10"
-                android:padding="5dp"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:scrollbars="vertical"
-                android:hint=" Location..."
-                android:textColor="@android:color/black"
-                android:textSize="16dp"
-                android:layout_below="@+id/tvPickup"
-                android:layout_toRightOf="@+id/ll_grub1_1"
-        />
-    </RelativeLayout>
-
-    <RelativeLayout
-            android:id="@+id/ll_grub2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ll_grub1"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp">
-
-        <TextView
-                android:id="@+id/tvYourorder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your Orders"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="15dp"
-                android:textSize="16dp"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"/>
-        <RelativeLayout
-                android:id="@+id/ll_grub2_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvYourorder"
-                android:background="#EFF2F7">
-            <TextView
-                    android:id="@+id/tvType"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="The Laundri House....."
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    android:layout_margin="10dp"/>
+                android:layout_below="@+id/id_toolbar_checkout">
 
-            <View
-                    android:id="@+id/line_order"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@android:color/black"
-                    android:layout_below="@+id/tvType"/>
             <RelativeLayout
-                    android:id="@+id/p_grub"
+                    android:id="@+id/ll_grub1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_below="@+id/line_order">
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp">
 
                 <TextView
-                        android:id="@+id/p_idjumlah"
-                        android:textAlignment="center"
-                        android:textSize="14sp"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:text="1 kg"/>
-
-                <TextView
-                        android:id="@+id/p_tvcuci"
+                        android:id="@+id/tvPickup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cuci Pakaian + Setrika"
-                        android:textSize="14sp"
-                        android:layout_marginStart="20dp"
-                        android:layout_toRightOf="@id/p_idjumlah"/>
-                <TextView
-                        android:id="@+id/p_subtotal"
-                        android:layout_width="match_parent"
+                        android:text="Pickup Location"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"/>
+
+                <RelativeLayout
+                        android:id="@+id/ll_grub1_1"
+                        android:layout_width="70dp"
+                        android:layout_height="88dp"
+                        android:layout_below="@id/tvPickup"
+                        android:background="#EFF2F7">
+
+                    <ImageView
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/location"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                    />
+
+                </RelativeLayout>
+                <EditText
+                        android:id="@+id/et_alamat"
+                        android:inputType="textMultiLine"
+                        android:lines="4"
+                        android:minLines="4"
+                        android:background="#EFF2F7"
+                        android:gravity="top|left"
+                        android:maxLines="10"
+                        android:padding="5dp"
                         android:layout_height="wrap_content"
-                        android:text="Rp. 10000"
-                        android:textSize="14sp"
-                        android:gravity="right"
-                        android:layout_toRightOf="@id/p_tvcuci"/>
+                        android:layout_width="match_parent"
+                        android:scrollbars="vertical"
+                        android:hint=" Location..."
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:layout_below="@+id/tvPickup"
+                        android:layout_toRightOf="@+id/ll_grub1_1"
+                />
             </RelativeLayout>
+
             <RelativeLayout
-                    android:id="@+id/t_grub"
+                    android:id="@+id/ll_grub2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_below="@+id/p_grub">
+                    android:layout_below="@+id/ll_grub1"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp">
 
                 <TextView
-                        android:id="@+id/t_idjumlah"
-                        android:textAlignment="center"
-                        android:textSize="14sp"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:text="1 pcs"/>
-                <TextView
-                        android:id="@+id/t_tvtas"
+                        android:id="@+id/tvYourorder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cuci Tas"
-                        android:textSize="14sp"
-                        android:layout_marginStart="20dp"
-                        android:layout_toRightOf="@id/t_idjumlah"/>
-                <TextView
-                        android:id="@+id/t_subtotal"
+                        android:text="Your Orders"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="15dp"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"/>
+                <RelativeLayout
+                        android:id="@+id/ll_grub2_1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rp. 12000"
-                        android:textSize="14sp"
-                        android:gravity="right"
-                        android:layout_toRightOf="@id/t_tvtas"/>
+                        android:layout_below="@+id/tvYourorder"
+                        android:background="#EFF2F7">
+                    <TextView
+                            android:id="@+id/tvType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="The Laundri House....."
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"
+                            android:layout_margin="10dp"/>
+
+                    <View
+                            android:id="@+id/line_order"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@android:color/black"
+                            android:layout_below="@+id/tvType"/>
+                    <RelativeLayout
+                            android:id="@+id/p_grub"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_below="@+id/line_order">
+
+                        <TextView
+                                android:id="@+id/p_idjumlah"
+                                android:textAlignment="center"
+                                android:textSize="14sp"
+                                android:layout_width="50dp"
+                                android:layout_height="25dp"
+                                android:text="1 kg"/>
+
+                        <TextView
+                                android:id="@+id/p_tvcuci"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cuci Pakaian + Setrika"
+                                android:textSize="14sp"
+                                android:layout_marginStart="20dp"
+                                android:layout_toRightOf="@id/p_idjumlah"/>
+                        <TextView
+                                android:id="@+id/p_subtotal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Rp. 10000"
+                                android:textSize="14sp"
+                                android:gravity="right"
+                                android:layout_toRightOf="@id/p_tvcuci"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:id="@+id/t_grub"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_below="@+id/p_grub">
+
+                        <TextView
+                                android:id="@+id/t_idjumlah"
+                                android:textAlignment="center"
+                                android:textSize="14sp"
+                                android:layout_width="50dp"
+                                android:layout_height="25dp"
+                                android:text="1 pcs"/>
+                        <TextView
+                                android:id="@+id/t_tvtas"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cuci Tas"
+                                android:textSize="14sp"
+                                android:layout_marginStart="20dp"
+                                android:layout_toRightOf="@id/t_idjumlah"/>
+                        <TextView
+                                android:id="@+id/t_subtotal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Rp. 12000"
+                                android:textSize="14sp"
+                                android:gravity="right"
+                                android:layout_toRightOf="@id/t_tvtas"/>
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:id="@+id/s_grub"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_below="@+id/t_grub">
+                        <TextView
+                                android:id="@+id/s_idjumlah"
+                                android:textAlignment="center"
+                                android:textSize="14sp"
+                                android:layout_width="50dp"
+                                android:layout_height="25dp"
+                                android:text="1 pcs"/>
+
+                        <TextView
+                                android:id="@+id/s_tvsepatu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Cuci Sepatu"
+                                android:textSize="14sp"
+                                android:layout_marginStart="20dp"
+                                android:layout_toRightOf="@id/s_idjumlah"/>
+                        <TextView
+                                android:id="@+id/s_subtotal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Rp. 25000"
+                                android:textSize="14sp"
+                                android:gravity="right"
+                                android:layout_toRightOf="@id/s_tvsepatu"/>
+                    </RelativeLayout>
+                    <View
+                            android:id="@+id/line_order2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginBottom="20dp"
+                            android:background="@android:color/black"
+                            android:layout_below="@+id/s_grub"/>
+                </RelativeLayout>
             </RelativeLayout>
+
             <RelativeLayout
-                    android:id="@+id/s_grub"
+                    android:id="@+id/ll_grub3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="15dp"
-                    android:layout_below="@+id/t_grub">
-                <TextView
-                        android:id="@+id/s_idjumlah"
-                        android:textAlignment="center"
-                        android:textSize="14sp"
-                        android:layout_width="50dp"
-                        android:layout_height="25dp"
-                        android:text="1 pcs"/>
+                    android:layout_below="@+id/ll_grub2"
+                    android:background="@drawable/border_hitam"
+                    android:layout_margin="15dp">
 
                 <TextView
-                        android:id="@+id/s_tvsepatu"
+                        android:id="@+id/tvPayment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cuci Sepatu"
-                        android:textSize="14sp"
-                        android:layout_marginStart="20dp"
-                        android:layout_toRightOf="@id/s_idjumlah"/>
-                <TextView
-                        android:id="@+id/s_subtotal"
+                        android:text="Payment Details"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:layout_margin="10dp"/>
+
+                <RelativeLayout
+                        android:id="@+id/p_grub_2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rp. 25000"
-                        android:textSize="14sp"
-                        android:gravity="right"
-                        android:layout_toRightOf="@id/s_tvsepatu"/>
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_below="@+id/tvPayment">
+
+                    <TextView
+                            android:id="@+id/p_idjumlah_2"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
+                            android:text="1 kg"/>
+
+                    <TextView
+                            android:id="@+id/p_tvcuci_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cuci Pakaian + Setrika"
+                            android:textSize="14sp"
+                            android:layout_marginStart="20dp"
+                            android:layout_toRightOf="@id/p_idjumlah_2"/>
+                    <TextView
+                            android:id="@+id/p_subtotal_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. 10000"
+                            android:textSize="14sp"
+                            android:gravity="right"
+                            android:layout_toRightOf="@id/p_tvcuci_2"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                        android:id="@+id/t_grub_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_below="@+id/p_grub_2">
+
+                    <TextView
+                            android:id="@+id/t_idjumlah_2"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
+                            android:text="1 pcs"/>
+                    <TextView
+                            android:id="@+id/t_tvtas_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cuci Tas"
+                            android:textSize="14sp"
+                            android:layout_marginStart="20dp"
+                            android:layout_toRightOf="@id/t_idjumlah_2"/>
+                    <TextView
+                            android:id="@+id/t_subtotal_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. 12000"
+                            android:textSize="14sp"
+                            android:gravity="right"
+                            android:layout_toRightOf="@id/t_tvtas_2"/>
+                </RelativeLayout>
+                <RelativeLayout
+                        android:id="@+id/s_grub_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_below="@+id/t_grub_2">
+                    <TextView
+                            android:id="@+id/s_idjumlah_2"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
+                            android:text="1 pcs"/>
+
+                    <TextView
+                            android:id="@+id/s_tvsepatu_2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cuci Sepatu"
+                            android:textSize="14sp"
+                            android:layout_marginStart="20dp"
+                            android:layout_toRightOf="@id/s_idjumlah_2"/>
+                    <TextView
+                            android:id="@+id/s_subtotal_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Rp. 25000"
+                            android:textSize="14sp"
+                            android:gravity="right"
+                            android:layout_toRightOf="@id/s_tvsepatu_2"/>
+                </RelativeLayout>
+                <View
+                        android:id="@+id/line_order3"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@android:color/black"
+                        android:layout_below="@+id/s_grub_2"/>
+
+                <RelativeLayout
+                        android:id="@+id/ll_grub3_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/line_order3"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp">
+                    <TextView
+                            android:id="@+id/tvtexSubtotal"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:text="Subtotal"
+                            android:gravity="left"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"/>
+                    <TextView
+                            android:id="@+id/tvSubtotal"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="Rp. 0"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"
+                            android:layout_toRightOf="@id/tvtexSubtotal"
+                            android:gravity="right"/>
+                </RelativeLayout>
+
+                <View
+                        android:id="@+id/line_order4"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@android:color/black"
+                        android:layout_below="@+id/ll_grub3_1"/>
+                <RelativeLayout
+                        android:id="@+id/ll_grub3_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/line_order4"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp">
+                    <TextView
+                            android:id="@+id/tvKirim"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:text="shipping cost"
+                            android:gravity="left"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"/>
+                    <TextView
+                            android:id="@+id/tvTotalKirim"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="Rp. 0"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"
+                            android:layout_toRightOf="@id/tvKirim"
+                            android:gravity="right"/>
+                </RelativeLayout>
+                <View
+                        android:id="@+id/line_order5"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@android:color/black"
+                        android:layout_below="@+id/ll_grub3_2"/>
+                <RelativeLayout
+                        android:id="@+id/ll_grub3_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/line_order5"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp">
+                    <TextView
+                            android:id="@+id/tvtextTotal"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:text="Total"
+                            android:gravity="left"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"/>
+                    <TextView
+                            android:id="@+id/tvTotal"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="Rp. 0"
+                            android:textColor="@android:color/black"
+                            android:textStyle="bold"
+                            android:layout_toRightOf="@id/tvtextTotal"
+                            android:gravity="right"/>
+                </RelativeLayout>
             </RelativeLayout>
-            <View
-                    android:id="@+id/line_order2"
+            <android.support.design.widget.CollapsingToolbarLayout
+                    android:id="@+id/id_make_order"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="20dp"
-                    android:background="@android:color/black"
-                    android:layout_below="@+id/s_grub"/>
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/ll_grub3"
+                    android:background="@color/biruDesain">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Make Order"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/white"
+                        android:textSize="20dp"
+                        android:textAlignment="center"/>
+            </android.support.design.widget.CollapsingToolbarLayout>
         </RelativeLayout>
-    </RelativeLayout>
-
-    <RelativeLayout
-            android:id="@+id/ll_grub3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ll_grub2"
-            android:background="@drawable/border_hitam"
-            android:layout_margin="15dp">
-
-        <TextView
-                android:id="@+id/tvPayment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Payment Details"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                android:layout_margin="10dp"/>
-
-        <RelativeLayout
-                android:id="@+id/p_grub_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="10dp"
-                android:layout_below="@+id/tvPayment">
-
-            <TextView
-                    android:id="@+id/p_idjumlah_2"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    android:layout_width="50dp"
-                    android:layout_height="25dp"
-                    android:text="1 kg"/>
-
-            <TextView
-                    android:id="@+id/p_tvcuci_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cuci Pakaian + Setrika"
-                    android:textSize="14sp"
-                    android:layout_marginStart="20dp"
-                    android:layout_toRightOf="@id/p_idjumlah_2"/>
-            <TextView
-                    android:id="@+id/p_subtotal_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Rp. 10000"
-                    android:textSize="14sp"
-                    android:gravity="right"
-                    android:layout_toRightOf="@id/p_tvcuci_2"/>
-        </RelativeLayout>
-
-        <RelativeLayout
-                android:id="@+id/t_grub_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_below="@+id/p_grub_2">
-
-            <TextView
-                    android:id="@+id/t_idjumlah_2"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    android:layout_width="50dp"
-                    android:layout_height="25dp"
-                    android:text="1 pcs"/>
-            <TextView
-                    android:id="@+id/t_tvtas_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cuci Tas"
-                    android:textSize="14sp"
-                    android:layout_marginStart="20dp"
-                    android:layout_toRightOf="@id/t_idjumlah_2"/>
-            <TextView
-                    android:id="@+id/t_subtotal_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Rp. 12000"
-                    android:textSize="14sp"
-                    android:gravity="right"
-                    android:layout_toRightOf="@id/t_tvtas_2"/>
-        </RelativeLayout>
-        <RelativeLayout
-                android:id="@+id/s_grub_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="15dp"
-                android:layout_below="@+id/t_grub_2">
-            <TextView
-                    android:id="@+id/s_idjumlah_2"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    android:layout_width="50dp"
-                    android:layout_height="25dp"
-                    android:text="1 pcs"/>
-
-            <TextView
-                    android:id="@+id/s_tvsepatu_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Cuci Sepatu"
-                    android:textSize="14sp"
-                    android:layout_marginStart="20dp"
-                    android:layout_toRightOf="@id/s_idjumlah_2"/>
-            <TextView
-                    android:id="@+id/s_subtotal_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Rp. 25000"
-                    android:textSize="14sp"
-                    android:gravity="right"
-                    android:layout_toRightOf="@id/s_tvsepatu_2"/>
-        </RelativeLayout>
-        <View
-                android:id="@+id/line_order3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="5dp"
-                android:background="@android:color/black"
-                android:layout_below="@+id/s_grub_2"/>
-
-        <RelativeLayout
-                android:id="@+id/ll_grub3_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/line_order3"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp">
-            <TextView
-                    android:id="@+id/tvtexSubtotal"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:text="Subtotal"
-                    android:gravity="left"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"/>
-            <TextView
-                    android:id="@+id/tvSubtotal"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="Rp. 0"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:layout_toRightOf="@id/tvtexSubtotal"
-                    android:gravity="right"/>
-        </RelativeLayout>
-
-        <View
-                android:id="@+id/line_order4"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@android:color/black"
-                android:layout_below="@+id/ll_grub3_1"/>
-        <RelativeLayout
-                android:id="@+id/ll_grub3_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/line_order4"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp">
-            <TextView
-                    android:id="@+id/tvKirim"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:text="shipping cost"
-                    android:gravity="left"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"/>
-            <TextView
-                    android:id="@+id/tvTotalKirim"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="Rp. 0"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:layout_toRightOf="@id/tvKirim"
-                    android:gravity="right"/>
-        </RelativeLayout>
-        <View
-                android:id="@+id/line_order5"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@android:color/black"
-                android:layout_below="@+id/ll_grub3_2"/>
-        <RelativeLayout
-                android:id="@+id/ll_grub3_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/line_order5"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="5dp"
-                android:layout_marginBottom="5dp">
-            <TextView
-                    android:id="@+id/tvtextTotal"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:text="Total"
-                    android:gravity="left"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"/>
-            <TextView
-                    android:id="@+id/tvTotal"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="5dp"
-                    android:text="Rp. 0"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    android:layout_toRightOf="@id/tvtextTotal"
-                    android:gravity="right"/>
-        </RelativeLayout>
-    </RelativeLayout>
-        <android.support.design.widget.CollapsingToolbarLayout
-                android:id="@+id/id_make_order"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/ll_grub3"
-                android:background="@color/biruDesain">
-
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Make Order"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/white"
-                    android:textSize="20dp"
-                    android:textAlignment="center"/>
-        </android.support.design.widget.CollapsingToolbarLayout>
-    </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

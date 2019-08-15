@@ -74,7 +74,7 @@ class SplashActivity : AppCompatActivity() {
         if (user != null)
             if (status.toString().equals("Admin")){
                 startActivity(Intent(this, HomeAdmin::class.java))
-            }else if(status.toString().equals("User")){
+            } else if (status.toString().equals("User")) {
                 startActivity(Intent(this, MainActivity::class.java))
             }
 

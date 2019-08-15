@@ -11,12 +11,12 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.order_activity.*
 
-class OrderActivity: AppCompatActivity() {
+class OrderActivity : AppCompatActivity() {
 
 
-    lateinit var fAuth : FirebaseAuth
-    lateinit var dbRef : DatabaseReference
-    lateinit var helperPref : PrefsHelper
+    lateinit var fAuth: FirebaseAuth
+    lateinit var dbRef: DatabaseReference
+    lateinit var helperPref: PrefsHelper
 
     var id_transaksi: Int? = null
     var id_detail: Int? = null
@@ -41,53 +41,53 @@ class OrderActivity: AppCompatActivity() {
 
         getDataAdmin()
 
-        id_laundri = intent.getIntExtra("id_laundri",0)
+        id_laundri = intent.getIntExtra("id_laundri", 0)
         namaLaundri = intent.getStringExtra("namaLaundri")
         idjumlahpakaian = intent.getStringExtra("id_jumpakaian")
         id_jumlahtas = intent.getStringExtra("id_jumtas")
         id_jumlahsepatu = intent.getStringExtra("id_jumsepatu")
         subpakaian = intent.getStringExtra("subpakaian")
         subtas = intent.getStringExtra("subtas")
-        subsepatu= intent.getStringExtra("subsepatu")
-        grandtotal= intent.getStringExtra("grandtotal")
-        ongkir= intent.getStringExtra("ongkir")
-        total= intent.getStringExtra("total")
+        subsepatu = intent.getStringExtra("subsepatu")
+        grandtotal = intent.getStringExtra("grandtotal")
+        ongkir = intent.getStringExtra("ongkir")
+        total = intent.getStringExtra("total")
 
 
-        p_idjumlah.setText(idjumlahpakaian.toString()+" kg")
-        t_idjumlah.setText(id_jumlahtas.toString()+" pcs")
-        s_idjumlah.setText(id_jumlahsepatu.toString()+" pcs")
+        p_idjumlah.text = idjumlahpakaian.toString() + " kg"
+        t_idjumlah.text = id_jumlahtas.toString() + " pcs"
+        s_idjumlah.text = id_jumlahsepatu.toString() + " pcs"
 
-        p_idjumlah_2.setText(idjumlahpakaian.toString()+" kg")
-        t_idjumlah_2.setText(id_jumlahtas.toString()+" pcs")
-        s_idjumlah_2.setText(id_jumlahsepatu.toString()+" pcs")
+        p_idjumlah_2.text = idjumlahpakaian.toString() + " kg"
+        t_idjumlah_2.text = id_jumlahtas.toString() + " pcs"
+        s_idjumlah_2.text = id_jumlahsepatu.toString() + " pcs"
 
-        p_subtotal.setText("Rp. "+subpakaian.toString())
-        t_subtotal.setText("Rp. "+subtas.toString())
-        s_subtotal.setText("Rp. "+subsepatu.toString())
+        p_subtotal.text = "Rp. " + subpakaian.toString()
+        t_subtotal.text = "Rp. " + subtas.toString()
+        s_subtotal.text = "Rp. " + subsepatu.toString()
 
-        p_subtotal_2.setText("Rp. "+subpakaian.toString())
-        t_subtotal_2.setText("Rp. "+subtas.toString())
-        s_subtotal_2.setText("Rp. "+subsepatu.toString())
+        p_subtotal_2.text = "Rp. " + subpakaian.toString()
+        t_subtotal_2.text = "Rp. " + subtas.toString()
+        s_subtotal_2.text = "Rp. " + subsepatu.toString()
 
-        tvSubtotal.setText("Rp. "+grandtotal.toString())
-        tvTotalKirim.setText("Rp. "+ongkir.toString())
-        tvTotal.setText("Rp. "+total.toString())
+        tvSubtotal.text = "Rp. " + grandtotal.toString()
+        tvTotalKirim.text = "Rp. " + ongkir.toString()
+        tvTotal.text = "Rp. " + total.toString()
 
-        if (idjumlahpakaian.toString().equals("0")){
+        if (idjumlahpakaian.toString().equals("0")) {
             p_grub.visibility = View.GONE
             p_grub_2.visibility = View.GONE
-        }else{
+        } else {
         }
-        if (id_jumlahtas.toString().equals("0")){
+        if (id_jumlahtas.toString().equals("0")) {
             t_grub.visibility = View.GONE
             t_grub_2.visibility = View.GONE
-        }else{
+        } else {
         }
-        if (id_jumlahsepatu.toString().equals("0")){
+        if (id_jumlahsepatu.toString().equals("0")) {
             s_grub.visibility = View.GONE
             s_grub_2.visibility = View.GONE
-        }else{
+        } else {
         }
 
         btn_back_order.setOnClickListener {
@@ -95,20 +95,22 @@ class OrderActivity: AppCompatActivity() {
         }
         id_make_order.setOnClickListener {
             simpanTransaksi()
-            if (idjumlahpakaian.toString().equals("0")){
-            }else{
+            if (idjumlahpakaian.toString().equals("0")) {
+            } else {
                 simpanPakaian()
             }
-            if (id_jumlahtas.toString().equals("0")){
-            }else{
+            if (id_jumlahtas.toString().equals("0")) {
+            } else {
                 simpanTas()
             }
-            if (id_jumlahsepatu.toString().equals("0")){
-            }else{
+            if (id_jumlahsepatu.toString().equals("0")) {
+            } else {
                 simpanSepatu()
             }
-            Toast.makeText(this@OrderActivity, "Data berhasil ditambah",
-                Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                this@OrderActivity, "Data berhasil ditambah",
+                Toast.LENGTH_SHORT
+            ).show()
 //            onBackPressed()
             startActivity(Intent(this@OrderActivity, MainActivity::class.java))
             finish()
@@ -116,7 +118,7 @@ class OrderActivity: AppCompatActivity() {
 
     }
 
-    fun getDataAdmin(){
+    fun getDataAdmin() {
         val uidUser = helperPref.getUI()
         val dbRefUser = FirebaseDatabase.getInstance().getReference("Akun/${uidUser}")
         dbRefUser.addValueEventListener(object : ValueEventListener {
@@ -134,7 +136,7 @@ class OrderActivity: AppCompatActivity() {
         })
     }
 
-    fun simpanTransaksi(){
+    fun simpanTransaksi() {
         val uidUser = helperPref.getUI()
         val CounterId = helperPref.getCounterId()
         id_transaksi = helperPref.getCounterId()
@@ -150,9 +152,10 @@ class OrderActivity: AppCompatActivity() {
         dbRef.child("ongkir").setValue(ongkir.toString())
         dbRef.child("total").setValue(total.toString())
 
-        helperPref.saveCounterId(CounterId+1)
+        helperPref.saveCounterId(CounterId + 1)
     }
-    fun simpanPakaian(){
+
+    fun simpanPakaian() {
         var CounterDetailId = helperPref.getCounterDetailId()
         id_detail = helperPref.getCounterDetailId()
         val user = fAuth.currentUser!!
@@ -163,9 +166,10 @@ class OrderActivity: AppCompatActivity() {
         dbRef.child("qty").setValue(idjumlahpakaian.toString())
         dbRef.child("harga").setValue(subpakaian.toString())
 
-        helperPref.saveCounterDetail(CounterDetailId+1)
+        helperPref.saveCounterDetail(CounterDetailId + 1)
     }
-    fun simpanTas(){
+
+    fun simpanTas() {
         var CounterDetailId = helperPref.getCounterDetailId()
         id_detail = helperPref.getCounterDetailId()
         val user = fAuth.currentUser!!
@@ -176,9 +180,10 @@ class OrderActivity: AppCompatActivity() {
         dbRef.child("qty").setValue(id_jumlahtas.toString())
         dbRef.child("harga").setValue(subtas.toString())
 
-        helperPref.saveCounterDetail(CounterDetailId+1)
+        helperPref.saveCounterDetail(CounterDetailId + 1)
     }
-    fun simpanSepatu(){
+
+    fun simpanSepatu() {
         var CounterDetailId = helperPref.getCounterDetailId()
         id_detail = helperPref.getCounterDetailId()
         val user = fAuth.currentUser!!
@@ -189,6 +194,6 @@ class OrderActivity: AppCompatActivity() {
         dbRef.child("qty").setValue(id_jumlahsepatu.toString())
         dbRef.child("harga").setValue(subsepatu.toString())
 
-        helperPref.saveCounterDetail(CounterDetailId+1)
+        helperPref.saveCounterDetail(CounterDetailId + 1)
     }
 }

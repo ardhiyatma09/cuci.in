@@ -8,10 +8,8 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import com.example.cuciinapp.R
 import com.example.cuciinapp.adapter.AdminOrderAdapter
-import com.example.cuciinapp.adapter.MyOrderAdapter
 import com.example.cuciinapp.model.MyOrderModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -19,14 +17,14 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class HomeAdmin : AppCompatActivity() {
 
-    private var adminorderAdapter : AdminOrderAdapter? = null
-    private var rvadminorder : RecyclerView? = null
-    private var list : MutableList<MyOrderModel> = ArrayList<MyOrderModel>()
-    lateinit var dbref : DatabaseReference
+    private var adminorderAdapter: AdminOrderAdapter? = null
+    private var rvadminorder: RecyclerView? = null
+    private var list: MutableList<MyOrderModel> = ArrayList<MyOrderModel>()
+    lateinit var dbref: DatabaseReference
     lateinit var helperPrefs: PrefsHelper
-    lateinit var fAuth : FirebaseAuth
+    lateinit var fAuth: FirebaseAuth
 
-    var id_laundri : String? = null
+    var id_laundri: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +47,7 @@ class HomeAdmin : AppCompatActivity() {
 
     }
 
-    fun getDataAdmin(){
+    fun getDataAdmin() {
         val dbRefUser = FirebaseDatabase.getInstance().getReference("Akun/${helperPrefs.getUI()}")
         dbRefUser.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -66,17 +64,18 @@ class HomeAdmin : AppCompatActivity() {
 
         })
     }
-    fun getDataOrder(id_laundri : String){
+
+    fun getDataOrder(id_laundri: String) {
         dbref = FirebaseDatabase.getInstance().getReference("Transaksi")
         dbref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(p0: DataSnapshot) {
                 list = ArrayList<MyOrderModel>()
-                for (dataSnapshot in p0.children){
+                for (dataSnapshot in p0.children) {
                     val addDataAll = dataSnapshot.getValue(MyOrderModel::class.java)
-                    if (addDataAll!!.getId_laundri() == id_laundri!!.toLong()){
-                        addDataAll!!.setKey(dataSnapshot.key!!)
-                        list.add(addDataAll!!)
-                        adminorderAdapter = AdminOrderAdapter(this@HomeAdmin!!, list)
+                    if (addDataAll!!.getId_laundri() == id_laundri.toLong()) {
+                        addDataAll.setKey(dataSnapshot.key!!)
+                        list.add(addDataAll)
+                        adminorderAdapter = AdminOrderAdapter(this@HomeAdmin, list)
                         rvadminorder!!.adapter = adminorderAdapter
                     }
 //                    Log.e("TAG_ERROR", "${list}")

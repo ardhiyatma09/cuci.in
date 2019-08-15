@@ -4,8 +4,6 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +37,7 @@ class FrHomeUser : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        rvLaundri.layoutManager = GridLayoutManager(activity!!, 2) as RecyclerView.LayoutManager?
+        rvLaundri.layoutManager = GridLayoutManager(activity!!, 2)
         getData()
 
         val urlGambarBerita = "http://172.168.10.7/cuci_in/images/"

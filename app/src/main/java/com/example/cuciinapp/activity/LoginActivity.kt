@@ -58,14 +58,14 @@ class LoginActivity : AppCompatActivity() {
         //admin[0]
         //cuci.in[1]
 
-            //admin@cuci.in
-            //admin[0]
-            //cuci.in[1]
+        //admin@cuci.in
+        //admin[0]
+        //cuci.in[1]
 
-            if (!email.isEmpty() && !password.isEmpty()) {
-                mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, OnCompleteListener { task ->
-                        if (task.isSuccessful) {
+        if (!email.isEmpty() && !password.isEmpty()) {
+            mAuth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, OnCompleteListener { task ->
+                    if (task.isSuccessful) {
 //                    startActivity(Intent(this, MainActivity::class.java))
                             val user = mAuth.currentUser
                             helperPrefs.saveUID(user!!.uid)
@@ -99,15 +99,18 @@ class LoginActivity : AppCompatActivity() {
                         } else {
                             Toast.makeText(this, "Email Atau Password Salah!", Toast.LENGTH_SHORT).show()
                         }
-                    })
-            } else {
-                Toast.makeText(this, "Isi Form dengan lengkap!!", Toast.LENGTH_SHORT).show()
-            }
+
+                    } else {
+                        Toast.makeText(this, "Email Atau Password Salah!", Toast.LENGTH_SHORT).show()
+                    }
+                })
+        } else {
+            Toast.makeText(this, "Isi Form dengan lengkap!!", Toast.LENGTH_SHORT).show()
+        }
 
     }
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
-            helperPrefs.saveUID(user.uid) //berfungsi untuk save uid ke sharedpreferences
             helperPrefs.saveStatus("User")
             startActivity(Intent(this, MainActivity::class.java))
             finish()

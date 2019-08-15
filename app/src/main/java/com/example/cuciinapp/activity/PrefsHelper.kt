@@ -7,7 +7,7 @@ import android.content.SharedPreferences
 class PrefsHelper {
     val USER_ID = "uidx"
     val COUNTER_ID = "counter"
-    val COUNTER_Detail_ID= "counter_detail"
+    val COUNTER_Detail_ID = "counter_detail"
     val Status = "Status"
 
     var mContext: Context

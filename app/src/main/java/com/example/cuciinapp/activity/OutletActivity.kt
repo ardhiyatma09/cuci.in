@@ -3,7 +3,6 @@ package com.example.cuciinapp.activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.cuciinapp.R
@@ -18,7 +17,7 @@ import retrofit2.Response
 class OutletActivity : AppCompatActivity() {
 
     var id_laundri : Int? = null
-    var namaLaundri : String? = null
+    var namaLaundri: String? = null
     var idjumlahpakaian: String? = null
     var id_jumlahtas: String? = null
     var id_jumlahsepatu: String? = null
@@ -42,7 +41,7 @@ class OutletActivity : AppCompatActivity() {
         id_toolbar.visibility = View.INVISIBLE
 
         btn_chat.setOnClickListener {
-            startActivity(Intent(this,RegisterActivity::class.java))
+            startActivity(Intent(this, SelectFriendActivity::class.java))
         }
         btn_min.setOnClickListener {
 
@@ -160,10 +159,11 @@ class OutletActivity : AppCompatActivity() {
         btn_order.setOnClickListener {
             if (idjumlahpakaian.toString().equals("0") &&
                 id_jumlahtas.toString().equals("0") &&
-                id_jumlahsepatu.toString().equals("0")){
+                id_jumlahsepatu.toString().equals("0")
+            ) {
 
-                Toast.makeText(this@OutletActivity, "Tidak boleh kosong" , Toast.LENGTH_SHORT).show()
-            }else{
+                Toast.makeText(this@OutletActivity, "Tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            } else {
                 var intent = Intent(this, OrderActivity::class.java)
                 intent.putExtra("id_laundri", id_laundri!!)
                 intent.putExtra("namaLaundri", namaLaundri!!)

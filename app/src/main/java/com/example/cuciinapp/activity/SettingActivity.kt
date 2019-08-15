@@ -123,15 +123,16 @@ class SettingActivity : AppCompatActivity() {
             val update_email = email_update.text.toString()
 
             if (update_alamat.isNotEmpty() && update_email.isNotEmpty() && update_nama.isNotEmpty()
-                && update_kontak.isNotEmpty()) {
+                && update_kontak.isNotEmpty()
+            ) {
 
-            dbRef.child("Akun/$uidUser/Nama").setValue(update_nama)
-            dbRef.child("Akun/$uidUser/Alamat").setValue(update_alamat)
-            dbRef.child("Akun/$uidUser/Kontak").setValue(update_kontak)
-            dbRef.child("Akun/$uidUser/Email").setValue(update_email)
-            Toast.makeText(this, "Sukses!!", Toast.LENGTH_SHORT).show()
-            finish()
-            }else{
+                dbRef.child("Akun/$uidUser/Nama").setValue(update_nama)
+                dbRef.child("Akun/$uidUser/Alamat").setValue(update_alamat)
+                dbRef.child("Akun/$uidUser/Kontak").setValue(update_kontak)
+                dbRef.child("Akun/$uidUser/Email").setValue(update_email)
+                Toast.makeText(this, "Sukses!!", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
                 Toast.makeText(this@SettingActivity, "Data Profil Harus Di Isi Semua!!", Toast.LENGTH_SHORT).show()
             }
 
@@ -151,9 +152,10 @@ class SettingActivity : AppCompatActivity() {
         when (requestCode) {
             PERMISSION_REQUEST_CODE -> {
                 if (grantResults.isEmpty() || grantResults[0]
-                    == PackageManager.PERMISSION_DENIED){
+                    == PackageManager.PERMISSION_DENIED
+                ) {
                     Toast.makeText(this@SettingActivity, "izin ditolak!!", Toast.LENGTH_SHORT).show()
-                }else{
+                } else {
                     imageChooser()
                 }
             }
@@ -209,14 +211,14 @@ class SettingActivity : AppCompatActivity() {
         val ref: StorageReference = stoRef
             .child("images/${nameX}.${GetFileExtension(filePath)}")
 //        var storage = data.reference.child("Image_Profile/$nameX").putFile(filePath)
-       ref.putFile(filePath)
+        ref.putFile(filePath)
             .addOnProgressListener { taskSnapshot ->
                 value = (100.0 * taskSnapshot.bytesTransferred / taskSnapshot.totalByteCount)
             }
             .addOnSuccessListener {
                 ref.downloadUrl.addOnSuccessListener {
-                        dbRef = FirebaseDatabase.getInstance().getReference("Akun/$uid")
-                        dbRef.child("bukti").setValue(it.toString())
+                    dbRef = FirebaseDatabase.getInstance().getReference("Akun/$uid")
+                    dbRef.child("bukti").setValue(it.toString())
                 }
                 Toast.makeText(this@SettingActivity, "berhasil upload", Toast.LENGTH_SHORT).show()
                 progressDownload.visibility = View.GONE
