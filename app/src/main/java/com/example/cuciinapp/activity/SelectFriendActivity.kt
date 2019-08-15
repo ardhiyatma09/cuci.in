@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.util.Log.e
+import android.view.MenuItem
 import android.view.View
 import com.example.cuciinapp.R
 import com.example.cuciinapp.adapter.FriendListAdapter
@@ -87,5 +88,13 @@ class SelectFriendActivity : AppCompatActivity() {
         } catch (e: Exception) {
         }
 
+    }
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item!!.itemId){
+            android.R.id.home ->{
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

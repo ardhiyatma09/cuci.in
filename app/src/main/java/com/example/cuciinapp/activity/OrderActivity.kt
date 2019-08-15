@@ -144,7 +144,7 @@ class OrderActivity: AppCompatActivity() {
         dbRef.child("id_laundri").setValue(id_laundri!!.toInt())
         dbRef.child("nama_laundri").setValue(namaLaundri!!.toString())
         dbRef.child("id_user").setValue(uidUser)
-        dbRef.child("status").setValue("Proses")
+        dbRef.child("status").setValue("Konfirmasi")
         dbRef.child("alamat").setValue(alamat!!.toString())
         dbRef.child("subtotal").setValue(grandtotal.toString())
         dbRef.child("ongkir").setValue(ongkir.toString())

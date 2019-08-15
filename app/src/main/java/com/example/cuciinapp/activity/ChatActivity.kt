@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.view.MenuItem
 import com.example.cuciinapp.R
 import com.example.cuciinapp.fragment.FrChat
 import com.example.cuciinapp.service.NotificationService
@@ -66,5 +67,14 @@ class ChatActivity : AppCompatActivity() {
         val actionBar = supportActionBar
         actionBar!!.setDisplayHomeAsUpEnabled(false)
         actionBar.setHomeButtonEnabled(false)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when(item!!.itemId){
+            android.R.id.home ->{
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

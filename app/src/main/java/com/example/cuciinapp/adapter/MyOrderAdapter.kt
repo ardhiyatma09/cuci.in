@@ -2,6 +2,7 @@ package com.example.cuciinapp.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.support.v4.content.ContextCompat
 import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -44,6 +45,14 @@ class MyOrderAdapter : RecyclerView.Adapter<MyOrderAdapter.MyOrderViewHolder> {
         p0.status.text = myorderModel.getStatus()
         p0.trTotal.text = "Rp. "+myorderModel.getTotal()
 
+        if (p0.status.text.equals("Konfirmasi")){
+            p0.ll_status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.warning))
+        }else if(p0.status.text.equals("Proses")){
+            p0.ll_status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.biruDesain))
+        }else if(p0.status.text.equals("Selesai")){
+            p0.ll_status.setBackgroundColor(ContextCompat.getColor(mContext, R.color.success))
+        }
+
 
         p0.ll_myorder.setOnClickListener {
 //            Toast.makeText(mContext, "${p0.idtransaksi.text}/${p0.idlaundri.text}",
@@ -64,12 +73,14 @@ class MyOrderAdapter : RecyclerView.Adapter<MyOrderAdapter.MyOrderViewHolder> {
 
     inner class MyOrderViewHolder(itemview : View) : RecyclerView.ViewHolder(itemview){
         var ll_myorder : LinearLayout
+        var ll_status : LinearLayout
         var idtransaksi : TextView
         var idlaundri : TextView
         var status : TextView
         var trTotal : TextView
         init {
             ll_myorder = itemview.findViewById(R.id.ll_myorder)
+            ll_status = itemview.findViewById(R.id.ll_status)
             idtransaksi = itemview.findViewById(R.id.id_transaksi)
             idlaundri = itemview.findViewById(R.id.id_laundri)
             status = itemview.findViewById(R.id.status)
